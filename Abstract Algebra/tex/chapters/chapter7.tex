@@ -1,0 +1,100 @@
+\begin{definition}[Coset of $H$ in $G$]
+	Let $G$ be a group and let $H$ be a non-empty subset of $G$. For any $a\in G$, we define $aH=\{ah\mid h\in H\}$, $Ha=\{ha\mid h\in H\}$ and $aHa^{-1}=\{aha^{-1}\mid h\in H\}$. When $H$ is a subgroup of $G$, the set $aH$ is called the \textit{left coset of $H$ in $G$ containing $a$}, whereas $Ha$ is called the \textit{right coset of $H$ in $G$ containing $a$}. In this case, the element $a$ is called the \textit{coset representative of $aH$ or $Ha$}. We use $|aH|$ to denote the number of elements in the set $aH$ and $|Ha|$ to denote the elements in $Ha$.
+\end{definition}
+
+\begin{lemma}
+	Let $H$ be a subgroup of $G$, and let $a$ and $b$ belong to $G$. Then,
+	\begin{enumerate}
+		\item $a\in aH$
+		\item $aH=H$ if and only if $a\in H$
+		\item $(ab)H=a(b(H))$ and $H(ab)=(Ha)b$
+		\item $aH=bH$ if and only if $a\in bH$
+		\item $aH=bH$ or $aH\cap bH=\emptyset$
+		\item $aH=bH$ if and only if $a^{-1}b\in H$
+		\item $|aH|=|bH|$
+		\item $aH=Ha$ if and only if $H=aHa^{-1}$
+		\item $aH$ is a subgroup of $G$ if and only if $a\in H$.
+	\end{enumerate}
+	All the above lemmas are valid for right cosets of $H$ in $G$.
+\end{lemma}
+\begin{proof}\hfill
+	\begin{enumerate}
+		\item Since $H$ is a subgroup of $G$, $e\in H$ where $e$ is the identity element in $G$. Thus, $a=ae\in aH$
+		\item If $aH=H$, using (1), we can conclude that $a\in H$. Conversely, if $a\in H$, note that $H$ is closed due to multiplication by $a$ (since $H$ is a group). Thus, the function $h\mapsto ah$ is bijective and hence an automorphism, thus $aH=H$.
+		\item Trivial
+		\item If $aH=bH$, using (1), it is trivial that $a\in bH$. On the other hand, if $a\in bH$, let $x=b^{-1}a\in H$. Note that due to (2), we can conclude that $xH=H$. But then, $bH=b(xH)=(bx)H=aH$. This completes the proof.
+		\item Follows from (4)
+		\item Follows from (4)
+		\item Since both $aH$ and $bH$ are bijective maps from $H$, we can conclude that $|aH|=|bH|=|H|$.
+		\item For all $x\in H$, there exists a unique $y\in H$ such that $ax=ya$, or $x=axa^{-1}$, which completes the proof.\footnote{Note that the uniqueness is due to the the fact that $x\mapsto ax$ is bijective.}
+		\item Suppose $aH$ is a subgroup of $G$, then due to the group axioms, $e\in aH$, or equivalently, $a^{-1}\in H$. But since $H$ is a group, it implies that $(a^{-1})^{-1}=a\in H$, which completes the proof.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}[Lagrange 1770\footnote{Apparently, Lagrange stated this theorem in 1770, whereas it was proved by Pietro Abbati some 30 years later.}]\label{thm:lagrange}
+	If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$. Moreover, the number of distinct left(right) cosets of $H$ in $G$ is $|G|/|H|$.
+\end{theorem}
+\begin{proof}
+	Let $a_1H,a_2H,\cdots,a_rH$ be the distinct cosets of $H$ contained in $G$. Then, due to Property 5 of \textbf{Lemma 7.48}, one notes that the above cosets are disjoint. Further, for any $a\in G$, there exists $a_i$ such that $a\in a_iH$. That means 
+	$$
+	G=\bigcup_{i=1}^{r}a_iH
+	$$
+	or equivalently,
+	$$
+	|G| = \sum_{i=1}^{r}|a_iH|\stackrel{\text{(7)}}{=} r|H|
+	$$
+	This completes the proof.
+\end{proof}
+I must remark that it is rather surprising that such an important theorem in Group Theory has such a short (an elegant) proof.
+\begin{definition}[Index of a Subgroup]
+	The index of a subgroup $H$ of $G$ is the number of distince left/right cosets of $H$ in $G$. It is denoted by $|G:H|$.
+\end{definition}
+\begin{corollary}
+	If $G$ is a finite group, then for any $a\in G$, $|a|$ divides $|G|$.
+\end{corollary}
+\begin{corollary}
+	Groups of prime order are cyclic.
+\end{corollary}
+\begin{proof}
+	Let $G$ be a group of prime order $p$. Then, for all $a\in G$, $a\ne p$, $|a|=p$. Thus, $G=\langle a\rangle$ for all $a\in G$.
+\end{proof}
+\begin{corollary}
+	Let $G$ be a finite group. Then for all $a\in G$, $a^{|G|}=e$.
+\end{corollary}
+
+\begin{proposition}
+	For two finite subgroups $H$ and $K$ of a group, define the set $HK=\{hk\mid h\in H, k\in K\}$. Then $|HK|=|H||K|/|H\cap K|$.
+\end{proposition}
+\begin{proof}
+	Although the set $HK$ has $|H||K|$ products, not all the products are the same. We shall like to see the extent to which we can find two same products. Say we have $hk=h'k'$. Then, there must exist a unique group element $t\in G$ such that $t=h^{-1}h'=kk'^{-1}$. But note that $h^{-1}h'\in H$ and $kk'^{-1}\in K$ and thus, $t\in H\cap K$. Thus, there are atmost $|H\cap K$ ways to represent a product.\\
+	On the other hand, for all $t\in H\cap K$, we have $hk=(ht)(t^{-1}k)$. Thus, there are atleast $|H\cap K|$ ways to represent a product. In conclusion, there are exactly $|H\cap K$ ways to represent a product and we have the desired conclusion. 
+\end{proof}
+We shall see the power of the above result in proving the following result:
+\begin{proposition}
+	Let $G$ be a group of order $2p$, where $p$ is a prime greater than $2$. Then $G$ is isomorphic to $\Z_{2p}$ or $D_p$.
+\end{proposition}
+\begin{proof}
+	According to Lagrange's Theorem, the orders of the elements of $G$ must be divisors of $2p$ and hence can take values from the set $\{1,2,p,2p\}$. If there exists an element with order $2p$, then the group must be cyclic and must be isomorphic to $\Z_{2p}$.\\
+	Suppose now that there is no element with order $2p$, then the orders of each element, other than the identity must be from the set $\{2,p\}$. In the first case, we suppose that all elements (excluding the identity) have order $2$. Then we can make unordered pairs of elements whose product is the identity. But note that the identity must be paired with itself, so in the case such a group did exist it would require an odd number of elements.\\
+	Hence, there must exist an element $a\in G$ of order $p$. Consider $\langle a\rangle$, this has exactly $p$ elements, then there must exist $b\in G\backslash\langle a\rangle$. There are now two choices, $|b|=2$ or $p$. In the second case, note that due to \textbf{Proposition 7.51}, we can conclude that the $|\langle a\rangle\langle b\rangle|=p^2$ but since $\langle a\rangle\langle b\rangle\subseteq G$, we have a contradiction.\\ 
+	Thus, $b$ must have order $2$. Consider now the set $\langle a\rangle\langle b\rangle$, this must have cardinality $2p$, but since it is a subset of $G$, it must be exactly equal to $G$. Note now that $ab\in G$ and since $ab\notin\langle a\rangle$, $ab$ must have order $2$ or, equivalently $ab = ba^{-1}$. This now helps us uniquely determine the multiplication table for the group $G$. Thus, we can conclude that all non cyclic groups of order $2p$ are isomorphic to one another. But, since $D_p$ is a non-cyclic group of order $2p$, we can conclude that $G$ is isomorphic to $D_p$.
+\end{proof}
+
+
+
+\begin{definition}[Stabilizer of a Point]
+	Let $G$ be a group of permutations of a set $S$. For each $i$ in $S$, let $\stab_{G}(i)=\{\phi\in G\mid \phi(i)=i\}$. We call $\stab_G(i)$ the \textit{stabilizer of $i$ in $G$.} 
+\end{definition}
+In other words, $\stab_{G}(i)$ is the set of permutations which fix $i$. Notice trivially, that $\stab_G(i)$ forms a subgroup of $G$.
+
+\begin{definition}[Orbit of a Point]
+	Let $G$ be a group of permutations of a set $S$. For each $i$ in $S$, let $\orb_G(i)=\{\phi(i)\mid\phi\in G\}$. The set $\orb_G(i)$ is a subset of $S$ called the \textit{orbit of $i$ under $G$}. We use $|\orb_G(i)|$ to denote the number of elements in $\orb_G(i)$.
+\end{definition}
+In short, these are the set of images of $i$ under all the possible permutations in $G$.
+
+\begin{theorem}[Orbit-Stabilizer-Theorem]
+	Let $G$ be a finite group of permutations of a set $S$. Then, for any $i$ from $S$, $|G|=|\orb_G(i)||\stab_G(i)|$.
+\end{theorem}
+\begin{proof}
+	Let $j\in\orb_G(i)$. Let $\sigma(j)$ denote the permutation which simply swaps $i$ with $j$. Consider now the right coset $\stab_{G}(i)\sigma(j)$ this is obviously a subset of all permutations in $G$ which 
+\end{proof}

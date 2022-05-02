@@ -1,0 +1,82 @@
+\begin{definition}[Ideal]
+	A subring $A$ of a ring $R$ is called a (two-sided) \textit{ideal} of $R$ if for every $r\in R$ and every $a\in A$, both $ra$ and $ar$ are in $A$. That is, $A$ is an ideal if $rA,Ar\subseteq A$ for all $r\in R$.\\
+	$A$ is called a \textit{proper} ideal of $R$ if $A$ is a proper subset of $A$.
+\end{definition}
+It is obvious that every subring of a commutative ring is an ideal.
+
+\begin{proposition}[Ideal Test]
+	A non-empty subset $A$ of a ring $R$ is an ideal of $R$ if 
+	\begin{enumerate}
+		\item $a-b\in A$ whenever $a,b\in A$
+		\item $ra$ and $ar$ are in $A$ whenever $a\in A$ and $r\in R$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	The second proposition implies that $A$ is closed under multiplication. Combined with the first, we can conclude by the ``subring test" which we proved in the previous chapter that $A$ is a subring of $R$. Finally, along with the second condition, $A$ is an ideal of $R$.
+\end{proof}
+
+Note that for any ring $R$, the set $\{0_R\}$ forms an ideal of $R$ and is termed as the \textit{trivial} ideal.
+
+\begin{definition}[Quotient Ring]
+	Let $R$ be a ring and let $A$ be an ideal of $R$. The Quotient Ring $R/A$ is defined as 
+	$$
+	R/A = \{r+A\mid r\in R\}
+	$$
+\end{definition}
+
+\begin{proposition}[Existence of Factor Rings]
+	Let $R$ be a ring and let $A$ be a subring of $R$. The set of cosets $\{r+A\mid r\in R\}$ is a ring under the operations $(s+A)+(t+A) = s+t+A$ and $(s+A)(t+A)= st+A$ if and only if $A$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+	One can trivially note that the set of cosets forms a group under addition. Furthermore, the above defined multiplication is a binary operation on the set of cosets furthermore, it is distributive over addition. We only need to show that multiplicaiton is well-defined if and only if $A$ is an ideal of $R$.\\
+	Suppose that $A$ is an ideal. Then, suppose that $s+A = s' + A$ and $t+A = t'+ A$ we only need to show hat $st + A = s't' + A$. According to the definition, $s' =  s + a$ and $t' = t + b$ for some $a,b\in A$. Then
+	\begin{equation*}
+		s't' = (s+a)(t+b) = st + at + sb + ab
+	\end{equation*}
+	And hence,
+	\begin{equation*}
+		s't' + A = st + at + sb + ab + A = st + at + sb + A 
+	\end{equation*}
+	now since \textcolor{red}{$at + sb \in A$} we can conclude that multiplication is well defined.\\
+	Suppose now that $A$ is a subring of $R$ which is not an ideal but multiplication is we ll defined. Then, there exist $a\in A$ and $r\in R$ such that $ar\notin A$ but $ra\in A$. Now, since multiplication is well defined,
+	$$
+	(0+A)(r+A) = A
+	$$
+	and hence, $ar\in A$ but this is absurd. Thus, $A$ must be an ideal.
+\end{proof}
+
+\begin{definition}[Prime Ideal, Maximal Ideal]
+	A \textit{prime ideal} $A$ of a commutative ring $R$ is a proper ideal of $R$ such that $a,b\in R$ and $ab\in A$ imply $a\in A$ or $b\in A$. A \textit{maximal} ideal of a commutative ring $R$ is a \textit{proper} ideal of $R$ such that, whenever $B$ is an ideal of $R$ and $A\subseteq B\subseteq R$, then $B=A$ or $B=R$.
+\end{definition}
+In simpler words, the Maximal Ideal is the proper ideal which contains all the proper ideals. The only ideal that is not contained in the Maximal Ideal is the ring $R$.
+
+\begin{proposition}
+	Let $R$ be a commutative ring with unity and let $A$ be an ideal of $R$. Then $R/A$ is an integral domain if and only if $A$ is a prime ideal.
+\end{proposition}
+\begin{proof}
+	Suppose $R/A$ is an integral domain and $ab\in A$ for some $a,b\in R$. Then, according to definition,
+	\begin{equation*}
+		(a+A)(b+A) = ab + A = A
+	\end{equation*}
+	But, since $A$ is the zero element of $R/A$, we must have either $a+A = A$ or $b+A = A$, that is, either $a\in A$ or $b\in A$.\\
+	Since $R$ is a commutative ring and $A$ is an ideal, we conclude that $R/A$ is a commutative ring containing unity. Suppose now that $A$ is prime and $(a+A)(b+A) = 0 + A = A$. Then, $ab\in A$ but since $A$ is prime, it means $a\in A$ or $b\in A$, that is, $a+A = A$ or $b+A = A$. In other words, either of $a+A$ or $b+A$ is the zero coset in $R/A$. This completes the proof.
+\end{proof}
+
+\begin{lemma}
+	Let $R$ be a commutative ring with unity and let $A$ be an ideal of $R$ containing unity. Then, $A=R$.
+\end{lemma}
+\begin{proof}
+	Trivial
+\end{proof}
+
+\begin{proposition}
+	Let $R$ be a commutative ring with unity and let $A$ be an ideal of $R$. Then $R/A$ is a field if and only if $A$ is maximal.
+\end{proposition}
+\begin{proof}
+	Suppose that $R/A$ is a field and $B$ is an ideal of $R$ that properly contains $A$. Let $b\in B$ be such that $b\notin A$. Then $b+A$ is a non-zero element of $R/A$. Therefore, there exists $c\in R$ such that $(b+A)(c+A) = 1 + A$, which is the multiplicative identity of $R/A$. But that means, $1-bc\in A$. So $1=1-bc+bc\in B$. Thus, using the previous lemma, we have $B=R$, that is, $A$ is maximal.\\
+	Now suppose that $A$ is maximal and let $b\in R$ but $b\notin A$. We shall show that $b+A$ has a multiplicative inverse. Consider $B = \{br+a\mid r\in R, a\in A\}$. This is an ideal of $R$ that properly contains $A$. Since $A$ is maximal, we must have $B=R$. Thus, $1\in B$, say, $1=bc+a'$ where $a'\in A$, then
+	\begin{equation*}
+		1 + A = bc + a' + A = bc + A = (b+A)(c+A)
+	\end{equation*}
+	this completes the proof.
+\end{proof}

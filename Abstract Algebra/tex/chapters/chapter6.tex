@@ -1,0 +1,123 @@
+\begin{definition}
+	An \textit{isomorphism} from a group $(G,\circ)$ to a group $(\overline{G},\cdot)$ is a bijective mapping (or function) $\phi:G\to\overline{G}$ that preserves the group operation. That is,
+	$$
+	\phi(a\circ b) = \phi(a)\cdot\phi(b)
+	$$
+	In the case there is an isomorphism from $G$ to $\overline{G}$, we say that $G$ and $\overline{G}$ are isomorphic and write $G\cong\overline{G}$.
+\end{definition}
+
+Here onwards, we shall use the notation $\overline{g}$ to denote the element $\phi(g)$ for some $g\in G$.\\
+
+Following are some examples of isomorphic groups:
+\begin{itemize}
+	\item $(\R,+)\cong(\R^+,\times)$. Consider the function $\phi:\R\to\R$ given by $\phi(x)=e^x$.
+	\item Any infinite cyclic group is isomorphic to $(\Z,+)$. Obviously, if $G=\langle a\rangle$, then, consider the mapping $\phi(a^k) = k$. 
+	\item Any finite cyclic group of order $n$ is isomorphic to $\Z_n$.
+\end{itemize}
+
+\begin{theorem}[Cayley 1854]
+	Every group is isomorphic to a group of permutations.
+\end{theorem}
+\begin{proof} % Make this proof better sometime later.
+	Let $G$ be the given group. We shall construct a permutation group $\overline{G}$ and show that $G\cong \overline{G}$. For any $g\in G$, define 
+	$$
+	T_{g}(x) = gx
+	$$
+	Note due to closure, $T_g:G\to G$. Further, since left multiplication by $g$ is invertibe, owing to the existence of $g^{-1}$, we conclude that $T_g$ is infact bijective and hence a permutation on $G$. Consider now the set 
+	$$
+	\overline{G} = \{T_{g}\mid g\in G\}
+	$$
+	We claim that $G\cong (\overline{G},\circ)$ where $\circ$ is the binary operator for composition of functions. Indeed, consider the function $\phi(g)=T_g$, this is obviously closed, owing to the fact that $T_{h}(T_{g}(x)) = hgx = T_{hg}(x)$. Further, associativity is obvious, since $f(gh)=(fg)h$. The identity function, which is obviously given by $T_{e}$ is also an element of $\overline{G}$. The inverse permutation for $T_g$ is given by $T_{g^{-1}}$ which is trivial to verify. Thus, $\overline{G}$ satisfies all the axioms of being a group. Thus $\phi$ is an isomorphism from $G$ to $\overline{G}$.
+\end{proof}
+
+\begin{proposition}
+	Suppose $\phi:G\to\overline{G}$ is an isomorphism. Then,
+	\begin{enumerate}
+		\item $\phi$ carries the identity of $G$ to that of $\overline{G}$.
+		\item For every integer $n$ and every $a\in G$, $\phi(a^n)=\phi(a)^n$.
+		\item For any two $a,b\in G$, $a$ and $b$ commute if and only if $\phi(a)$ and $\phi(b)$ commute.
+		\item $G=\langle a\rangle$ if and only if $\overline{G}=\langle\phi(a)\rangle$.
+		\item $|a|=|\langle\phi(a)\rangle|$ for all $a\in G$.
+		\item For a fixed integer $k$ and a fixed group element $b\in G$, the equation $x^k=b$ has as many solution as $x^k=\phi(b)$.
+		\item If $G$ is finite, then both $G$ and $\overline{G}$ have equal number of elements of the same order.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}The proofs will not be detailed, since this proposition is rather trivial.
+	\begin{enumerate}
+		\item Let $e$ be the identity element of $G$. Then note that for $g\in G$,
+		$$\overline{g}\overline{e}=\phi(g)\phi(e)=\phi(ge)=\overline{g}=\phi(eg)=\phi(e)\phi(g)=\overline{e}\overline{g}$$
+		This implies that $\overline{e}$ is the (unique) identity element of $\overline{G}$.
+		\item Trivial.
+		\item If $a$ and $b$ commute, then note that 
+		$$
+		\phi(a)\phi(b) = \phi(ab) = \phi(ba) = \phi(b)\phi(a)
+		$$
+		Conversely if $\phi(b)$ and $\phi(a)$ commute, then note that 
+		$$
+		\phi(ab) = \phi(a)\phi(b) = \phi(b)\phi(a) = \phi(ba)
+		$$
+		But, since $\phi$ is a bijective function, we conclude that $ab=ba$.
+		\item If $G=\langle a\rangle$, then for every element $g\in G$, there exists $k\in\Z$ such that $g=a^k$. This implies, $\phi(g)=\phi(a)^k$. Since $\phi$ is bijective, we can safely conclude that $\phi(a)$ is the generator for $G$. The converse follows similarly.
+		\item Follows from the previous result.\footnote{In other words, left as an exercise for the reader.}
+		\item Again, follows from bijectivity.
+		\item Ofcourse, if $g\in G$ has order $k$, then $\phi(g)$ must have order $k$ as well. Finish now using bijectivity of $G$.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Suppose $\phi$ is an isomorphism from a group $G$ onto a group $\overline{G}$. Then
+	\begin{enumerate}
+		\item $\phi^{-1}$ is an isomorphism from $\overline{G}$ onto $G$.
+		\item $G$ is Abelian if and only if $\overline{G}$ is Abelian.
+		\item $G$ is cyclic if and only if $\overline{G}$ is cyclic.
+		\item If $K$ is a subgroup of $G$, then $\phi(K)$ is a subgroup of $\overline{G}$.
+		\item $\phi(Z(G))=Z(\overline{G})$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	Similar to the previous proposition, detailed proofs will not be provided, for the same reason\\
+	\begin{enumerate}
+		\item Trivial since $\phi$ is bijective. 
+		\item Suppose $G$ is Abelian. Let $\overline{a}$ and $\overline{b}$ be two elements of $\overline{G}$. Then
+		$$
+		\overline{a}\overline{b} = \phi(ab) = \phi(ba) = \overline{b}\overline{a}
+		$$
+		The converse follows similarly. 
+		\item Follows from Property $4$ of \textbf{Proposition 6.41}.
+		\item Note first that $\phi(K)$ is closed under whatever group operation is associated with $\overline{G}$. Further, assocaitivity follows obviously. From Property $1$ and $2$ of \textbf{Propsition 6.41}, we are guaranteed the existance of an identity and an inverse for each element. Thus $\phi(K)$ satisfies all the group axioms and is a subgroup of $\overline{G}$.
+		\item Follows from Property 3 of \textbf{Proposition 6.41}
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}[Automorphism]
+	An isomorphism from a group $G$ onto itself is called an \textit{automorphism} of $G$. We use the notation $\aut(G)$ to denote the set of all automorphisms of $G$.
+\end{definition}
+Note that every group is isomorphic to itself under the identity function which is thus an automorphism.\\
+Some examples of (non-trivial) automorphisms are:
+\begin{itemize}
+	\item Let $G$ be any group. Define $\phi:G\to G$ as $\phi(g)=g^{-1}$
+	\item Let $\mathbb{C}$ be the group of complex numbers under addition. Define $\phi:\mathbb{C}\to\mathbb{C}$ as $\phi(z)=\overline{z}$
+\end{itemize}
+
+\begin{definition}[Inner Automorphism Induced by $a$]
+	Let $G$ be a group and let $a\in G$. The function $\phi_a:G\to G$ defined as $\phi_a(x)=axa^{-1}$ for all $x\in G$ is called the \textit{inner automorphism of $G$ induced by $a$}. We use the notation $\inn(G)$ to denote the set of all inner automorphisms of $G$.
+\end{definition}
+
+\begin{proposition}
+	$\aut(G)$ and $\inn(G)$ are groups under $\circ$ which is the function composition operator.
+\end{proposition}
+\begin{proof}
+	Let $\phi_1,\phi_2\in\aut(G)$. Note that $\phi_1\circ\phi_2$ is a bijective function as well and hence must be an element of $\aut(G)$. This implies closure. The proof of associativity is trivial. As we discussed earlier, the identity function from $G$ to itself is also an element of $\aut(G)$, call this $\varepsilon$. Then note that $\varepsilon\circ\phi=\phi=\phi\circ\varepsilon$, implying that $\varepsilon$ is the identity element in $\aut(G)$. Finally, note that every bijective function has an inverse to conclude that $\aut(G)$ is infact a group.\\
+	Let $\phi_a$ and $\phi_b$ be elements of $\inn(G)$. Then, note that $\phi_a(\phi_b(x))=(ab)x(ab)^{-1}=\phi_{ab}(x)$. This implies closure. Associativity is trivial. Note that $\phi_e(x)=x$ for all $x\in G$. Then $\phi_e(\phi_a(x))=\phi_{a}(x)=\phi_a(\phi_e(x))$, implying that $\phi_e$ is the identity element of $\inn(G)$. Now, $\phi_{a^{-1}}(\phi_a(x))=x=\phi_{a}(\phi_{a^{-1}}(x)) = \phi_e(x)$. Thus $\phi_{a^{-1}}$ is the inverse of $\phi_{a}$. Thus, $\inn(G)$ is a group. Also, note that $\inn(G)$ is a subgroup of $\aut(G)$.
+\end{proof}
+
+\begin{proposition}
+	For every positive integer$n$, $\aut(Z_n)\cong U(n)$.
+\end{proposition}
+\begin{proof}
+	Recall that the group operation for $\Z_n$ is $+$ and that for $U(n)$ is $\times$. Let $f\in\aut(\Z_n)$ and $u=f(1)$. We claim that $u\in U(n)$. Note first that $f(0)=0$. Then, for all $k\ge1$, $f(k)=\underbrace{u+u+\cdots+u}_{k \text{ times}}$ which can be proved via induction. Suppose $\gcd(n,u)=d>1$. Let $m = \frac{n}{d}$. Then, $f(m)=\underbrace{u+u+\cdots+u}_{m \text{ times}}=0=e$, but this is contradictory to the fact that $m\ne0$. Thus, $\gcd(u,n)=1$, or $u\in U(n)$. Note that if $f(1)$ is specified to be $u$, then, one can find $f(k)$ for all $k$, implying that the map $f\mapsto u$ must be bijective. The rest of the proof is straightforward.
+\end{proof}
+
+\begin{corollary}
+	There are exactly $\vphi(n)$ automorphisms for $\Z_n$.
+\end{corollary}

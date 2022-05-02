@@ -1,0 +1,78 @@
+While studying groups, we talked about sets which were associated with one binary operation. In the case of rings, we shall talk about sets which are associated with two binary operations.
+
+\begin{definition}[Ring]
+	A \textit{ring} $R$ is a set with two binary operations, addition (denoted by $a+b$) and multiplication (denoted by $ab$), such that for all $a,b,c\in R$:
+	\begin{enumerate}
+		\item $a+b=b+a$
+		\item $(a+b)+c = a+(b+c)$
+		\item There is an additive identity $0$. That is, there is an element $0$ in $R$ such that $a+0=a=0+a$ for all $a\in R$
+		\item There is an element $-a\in R$ such that $a+(-a)=0$
+		\item $a(bc)=(ab)c$
+		\item $a(b+c)=ab+ac$ and $(b+c)a=ba+ca$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}[Commutative Ring]
+	A ring is said to be \textit{commutative} when multiplication is commutative on the elements of the ring.
+\end{definition}
+
+\begin{definition}[Unity]
+	A unity (or identity, represented by $1$) in a ring is a non-zero element that is an identity under multiplication. That is, for all $a\in R$, $a1 = 1a = a$. A non-zero element of a commutative ring with unity need not have a multiplicative inverse. When it does, we say that it is a unit of the ring. Thus, $a$ is a unit if $a^{-1}$ exists and vice versa.
+\end{definition}
+
+Following are some examples of rings:
+\begin{itemize}
+	\item The set $\Z$ of integers under ordinary addition and multiplication is a commutative ring with unity $1$. The set of units is $\{-1,1\}$.
+	\item The set $\Z_n$ under addition and multiplication modulo $n$ is a commutative ring with unity $1$. The set of units is $U(n)$.
+	\item The set $\Z[x]$ of integer polynomials under ordinary addition and multiplication is a commutative ring with unity $f\equiv1$.
+\end{itemize}
+
+
+Following are some properties of rings:
+
+\begin{proposition}
+	Let $R$ be a ring and $a,b,c\in R$. Then,
+	\begin{enumerate}
+		\item $0$ is unique in a ring.
+		\item $a0=0a=0$
+		\item $a(-b) = (-a)b = -(ab)$
+		\item $(-a)(-b) = ab$
+		\item $a(b-c) = ab - ac$
+	\end{enumerate}
+	Furthermore, if $R$ has a unity element $1$, then 
+	\begin{enumerate}
+		\setcounter{enumi}{4}
+		\item $(-1)a = -a$
+		\item $(-1)(-1) = 1$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}\hfill
+	\begin{enumerate}
+		\item Say there are two zeroes, $0_1$ and $0_2$. Then $0_1 = 0_1+0_2 = 0_2+0_1 = 0_2$. 
+		\item $a0 = a(0+0) = a0 + a0$. Thus implying that $a0 = 0$. Proving for $0a$ is similar.
+		\item Note that $0=a(b-b) = ab + a(-b)$. This implies that $a(-b) = -(ab)$. Proving for $(-a)b$ is similar.
+		\item From the previous result, we know that $(-a)(-b) = (-(-a))b = ab$
+		\item Trivial
+		\item Using property $4$, we have $(-1)a = 1(-a) = -a$
+		\item Follows from the above.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	If a ring $R$ has a unity, it is unique. If a ring element has a multiplicative inverse, it is unique.
+\end{proposition}
+\begin{proof}
+	Follows the same proof method used while proving a similar statement in the case of a group.
+\end{proof}
+
+\begin{definition}[Subring]
+	A subset $S$ of a ring $R$ is a \textit{subring} of $R$ if $S$ is itself a ring with the operations of $R$.
+\end{definition}
+
+\begin{proposition}[Subring Test]
+	A non-empty subset $S$ of a ring $R$ is a subring if $S$ is closed under substraction and multiplication- that is, for all $a,b\in S$, $a-b,ab\in S$.
+\end{proposition}
+\begin{proof}
+	For all $a\in S$, $0=a-a\in S$ and hence, $-a = 0-a \in S$. Thus, for all $a,b\in S$, $a+b = a-(-b) \in S$ implying that $S$ is closed under addition and multiplication. Also, we have found the additive identity $0$ and shown the existence of an additive inverse for all elements of $S$. Finally, since $S\subseteq R$, multiplication will be associative on $S$ and would also be left and right distributive. This implies that $S$ is a subring of $R$.
+\end{proof}
+

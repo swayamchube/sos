@@ -1,0 +1,154 @@
+\begin{definition}[Extension Field]
+	A field $E$ is an \textit{extension field} of a field $F$ if $F\subseteq E$ and the operations of $F$ are those of $E$ restricted to $F$.
+\end{definition}
+
+\begin{theorem}[Kroneker, 1887]
+	Let $F$ be a field and let $f(x)$ be a nonconstant polynomial in $F[x]$. Then, there is an extension field $E$ of $F$ in which $f(x)$ has a zero.
+\end{theorem}
+\begin{proof}
+	Since $F[x]$ is a Unique Factorization Domain, $f(x)$ has an irreducible factor, say, $p(x)$. We claim that $F[x]/\langle p(x)\rangle$ works. We already know that this is a field. Consider the homomorphism $\phi:F\to E$ which maps $a\mapsto a+\langle p(x)\rangle$, which is one-one. And, thus, $E$ contains a subfield isomorphic to $F$. We may think of $E$ as containing $F$ if we simply identify the coset $a+\langle p(x)\rangle$ as just $a$ and vice versa.\\
+	We now claim that $x+\langle p(x)\rangle$ is a root of $p(x)$. Note, we write $p(x)=a_nx^n+\cdots+a_0$. Then, we have 
+	\begin{align*}
+		p(x+\langle p(x)\rangle) &= a_n(x+\langle p(x)\rangle)^n + \cdots + a_0\\
+		&= a_nx^n+\cdots+a_0 + \langle p(x)\rangle = p(x)+\langle p(x)\rangle\\
+		&= 0 + \langle p(x)\rangle
+	\end{align*} 
+	This completes the proof.
+\end{proof}
+
+\begin{definition}
+	We use the notation $F(a_1,a_2,\cdots,a_n)$ to denote the smallest field of $E$ which contains $F$ and the set $\{a_1,a_2,\cdots,a_n\}$.
+\end{definition}
+
+\begin{definition}[Splitting Fields]
+	Let $E$ be an extension field of $F$ and let $f(x)\in F[x]$ with degree atleast $1$. We say that $f(x)$ \textit{splits} in $E$ if there are elements $a\in F$ and $a_1,a_2,\cdots,a_n\in E$ such that 
+	\begin{equation*}
+		f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n)
+	\end{equation*}	
+	We call $E$ a splitting field for $f(x)$ over $F$ if 
+	\begin{equation*}
+		E = F(a_1,a_2,\cdots,a_n)
+	\end{equation*}
+\end{definition}
+
+\begin{proposition}
+	Let $F$ be a field and let $f(x)$ be a non-constant polynomial in $F[x]$. Then, there exists a splitting field for $f(x)$ over $F$.
+\end{proposition}
+\begin{proof}
+	We shall induct on $\deg f(x)$. If $\deg f(x)=1$, then $f(x)$ is linear and already splits over $F$. Now suppose that the statement is true for all $k<n$. We shall attempt to prove for $f(x)$ with $\deg f(x)=n$. Due to Kronecker, there exists a field $E$ in which $f(x)$ has a zero, call it $a_1$. Then, we can write $f(x)=(x-a)g(x)$, by induction, there is a field $K$ that contains $E$ and all the zeros of $g(x)$, say, $a_2,\cdots,a_n$. Then, obviously, there exists a splitting field which is the subset of the aforementioned field.
+\end{proof}
+
+\begin{proposition}
+	Let $F$ be a field and let $p(x)\in F[x]$ be irreducible over $F$. If $a$ is a zero of $p(x)$ in come extension $E$ of $F$, then $F(a)$ is isomorphic to $F[x]/\langle p(x)\rangle$. Furthermore, if $\deg p(x)=n$, then every member of $F(a)$ can be uniquely expressed in the form
+	\begin{equation*}
+		c_{n-1}a^{n-1}+c_{n-2}a^{n-2}+\cdots+c_0
+	\end{equation*}
+	where $c_0,c_1,\cdots,c_{n-1}\in F$.
+\end{proposition}
+\begin{proof}
+	Consider the function $\phi$ from $F[x]$ to $F(a)$ given by $\phi(f(x))=f(a)$. It is clear that $\phi$ is a ring homomorphism. Since $p(a)=0$, we know that $\langle p(x)\rangle\subseteq\Ker\phi$. But, due to \textbf{Proposition 17.132}, $\langle p(x)\rangle$ is a maximal ideal and thus $\Ker\phi = \langle p(x)\rangle$ since $\Ker\phi\ne F[x]$. Due to the properties that we proved for ring homomorphisms, $\phi(F[x])$ is a subfield of $F(a)$. But since $F(a)$ is the minimum field which contains $F$ and $a$, $\phi(F[x])=F(a)$. And hence,
+	\begin{equation*}
+		F[x]/\langle p(x)\rangle\cong\phi(F[x])=F(a)
+	\end{equation*}
+	Now, note any element of $F[x]/\langle p(x)\rangle$ can be written as 
+	\begin{equation*}
+		c_{n-1}x^{n-1}+c_{n-2}x^{n-2}+\cdots+c_0 + \langle p(x)\rangle 
+	\end{equation*}
+	where $c_0,\cdots,c_{n-1}\in F$ and this completes the proof.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field and let $p(x)\in F[x]$ be irreducible over $F$. If $a$ is a zero of $p(x)$ in some extension $E$ of $F$ and $b$ is a zero of $p(x)$ in some extension $E'$ of $F$, then $F(a)\cong F(b)$.
+\end{corollary}
+
+\begin{lemma}
+	Let $F$ be a field, let $p(x)\in F[x]$ be irreducible over $F$, and let $a$ be a zero of $p(x)$ in some extension of $F$. If $\phi$ is a field isomorphism from $F$ to $F'$ and $b$ is a zero of $\phi(p(x))$ in some extension of $F'$, then there is an isomorphism from $F(a)$ to $F'(b)$ that agrees with $\phi$ on $F$ and carries $a$ to $b$.
+\end{lemma}
+\begin{proof}
+	First observe that since $p(x)$ is irredicuble over $F$, $\phi(p(x))$ is irreducible over $F'$. Now note that the mapping $\Phi:F[x]/\langle p(x)\rangle\to F'[x]/\langle\phi(p(x))\rangle$ given by
+	$$
+	f(x)+\langle p(x)\rangle\mapsto\phi(f(x))+\langle\phi(p(x))\rangle
+	$$
+	is a field isomorphism. We know that there is an isomorphism $\alpha$ from $F(a)$ to $F[x]/\langle p(x)\rangle$ and there is an isomorphism $\beta$ from $F'[x]/\langle\phi(p(x))\rangle$ to $F'(b)$. Then, the isomorphism $\beta\Phi\alpha$ is the required mapping from $F(a)$ to $F'(b)$.
+\end{proof}
+
+\begin{proposition}
+	Let $\phi$ be an isomorphism from a field $F$ to a field $F'$ and let $f(x)\in F[x]$. If $E$ is a splitting field for $f(x)$ over $F$, and $E'$ is a splitting field for $\phi(f(x))$ over $F'$, then there is an isomorphism from $E$ to $E'$ that agrees with $\phi$ on $F$.
+\end{proposition}
+\begin{proof}
+	We use induction on $\deg f(x)$. If $\deg f(x)=1$, then $E=F$ and $E'=F'$, so $\phi$ is the desired mapping. If $\deg f(x)>1$, let $p(x)$ be an irreducible factor of $f(x)$, let $a$ be a zero of $p(x)$ in $E$ and let $b$ be a zero of $\phi(p(x))$ in $E'$. Due to the previous lemma, there is an isomorphism $\alpha$ from $F(a)$ to $F'(b)$ that agrees with $\phi$ on $F$ and carries $a$ to $b$. We now write $f(x)=(x-a)g(x)$, where $g(x)\in F(a)[x]$. Then $E$ is a splitting field for $g(x)$ over $F(a)$ and $E'$ is a splitting field for $\alpha(g(x))$ over $F'(b)$. Since $\deg g(x)<\deg f(x)$, there is an isomorphism from $E$ to $E'$ that agrees with $\alpha$ on $F(a)$ and therefore with $\phi$ on $F$.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field and let $f(x)\in F[x]$. Then any two splitting fields of $f(x)$ over $F$ are isomorphic.
+\end{corollary}
+\begin{proof}
+	Suppose that $E$ and $E'$ are splitting fields of $f(x)$ over $F$. Let now $\phi$ be the identity isomorphism. This completes the proof.
+\end{proof}
+
+\begin{definition}
+	Let $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ belong to $F[x]$. The derivative of $f(x)$, denoted by $f'(x)$, is the polynomial 
+	\begin{equation*}
+		na_{n}x^{n-1}+(n-1)a_{n-1}x^{n-2}+\cdots+a_1
+	\end{equation*}
+\end{definition}
+
+\begin{lemma}
+	Let $f(x)$ and $g(x)$ be elements of $F[x]$ and let $a\in F$. Then,
+	\begin{enumerate}
+		\item $(f(x)+g(x))'=f'(x)+g'(x)$
+		\item $(af(x))' = af'(x)$
+		\item $(f(x)g(x))' = f(x)g'(x)+g(x)f'(x)$
+	\end{enumerate}
+\end{lemma}
+The proof is omitted.
+
+\begin{proposition}
+	A polynomial $f(x)$ over a field $F$ has a multiple zero in some extension $E$ if and only if $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$.
+\end{proposition}
+\begin{proof}
+	If $a$ is a multiple root of $f(x)$ in some extension $E$, then there is a $g(x)$ in $E[x]$ such that $f(x)=(x-a)^2g(x)$. But then, we would have $f'(x)=(x-a)^2g'(x)+2(x-a)g(x)$, implying that $f'(a)=0$. Thus $x-a$ is a factor of both $f(x)$ and $f'(x)$ in the extension $E$ of $F$. Now if $f(x)$ and $f'(x)$ have no common divisor of positive degree in $F[x]$, there are polynomials $h(x)$ and $k(x)$ in $F[x]$ such that $f(x)h(x)+f'(x)k(x)=1$ (B\'ezout's Lemma) as an element of $E[x]$, but that would mean $x-a$ is a factor of $1$, which is absurd.\\
+	Conversely, suppose that $f(x)$ and $f'(x)$ have a common factor of positive degree. Let $a$ be a zero of the common factor. Then $a$ is a zero of $f(x)$ and $f'(x)$. Since $a$ is a zero of $f(x)$, there is a polynomial $q(x)$ such that $f(x)=(x-a)q(x)$. Then $f'(x)=q(x)+(x-a)q'(x)$ which obviously implies $x-a$ is a factor of $q(x)$. Thus $f(x)$ has a multiple zero.
+\end{proof}
+
+\begin{proposition}
+	Let $f(x)$ be an irreducible polynomial over a field $F$. If $F$ has characteristic $0$, then $f(x)$ has no multiple zeros. If $F$ has characteristic $p\ne0$, then $f(x)$ has a multiple zero only if it is of the form $f(x)=g(x^p)$ for some $g(x)$ in $F[x]$.
+\end{proposition}
+\begin{proof}
+	If $f(x)$ has a multiple root, due to the previous proposition, $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$. Since $f(x)$ is irreducible, the only factor of $f(x)$ with positive degree is $f(x)$, which would imply $f(x)$ divides $f'(x)$ which is absurd since $\deg f(x)>\deg f'(x)$. Thus, we must have $f'(x)=0$. Now, if $f(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$, then $f'(x) = na_nx^{n-1}+(n-1)a_{n-1}x^{n-2}+\cdots+a_1=0$, which is possible if and only if $ka_k=0$ for all permissilble $k$. So, when $\chr F=0$, we would need to have $f(x)$ to be a constant polynomial which is reducible and hence, a contradiction.\\
+Per	On the other hand, when $\chr F = p\ne 0$, we have $a_k=0$ when $p$ doesn't divide $k$. Thus, the only powers of $x$ which appear in the expansion of $f(x)$ are the ones which are divisible by $p$. Thus, $f(x)=g(x^p)$ for some $g(x)\in F[x]$.
+\end{proof}
+
+\begin{definition}[Perfect Field]
+	A field $F$ is called \textit{perfect} if $F$ has characteristic $0$ or $F$ has characteristic $p$ and $F^p=\{a^p\mid a\in F\}=F$.
+\end{definition}
+
+\begin{theorem}
+	Every finite field is perfect.
+\end{theorem}
+\begin{proof}
+	Let $F$ be a finite field with characteristic $p$. Consider the mapping $\phi:F\to F$ given by $x\mapsto x^p$. Obviously, $\phi(ab)=\phi(a)\phi(b)$ and $\phi(a+b)=\phi(a)+\phi(b)$. Furthermore, $\Ker\phi=\{0\}$ which is obvious. Thus, $\phi$ is one-one and, since $F$ is finite, $\phi$ must be onto. Thus, $F^p=F$. 
+\end{proof}
+
+\begin{proposition}
+	If $f(x)$ is an irreducible polynomial over a perfect field $F$, then $f(x)$ has no multiple zeros.
+\end{proposition}
+\begin{proof}
+	Suppose $F$ has characteristic $p$ and suppose that $f$ has multiple zeros. Then, due to \textbf{Proposition 20.160}, $f(x)=g(x^p)$ for some $g(x)\in F[x]$. But since $F^p=F$, every coefficient of $g$ can be written as $b^p$ for some $b$. This is elucidated by the following
+	\begin{align*}
+		f(x) &= g(x^p) = b_n^px^{pn}+\cdots+b_0^p\\
+		&= \left(b_nx^n+\cdots+b_0\right)^p
+	\end{align*}
+	but this is a contradiction, since we assumed that $f(x)$ was irreducible.
+\end{proof}
+
+\begin{proposition}
+	Let $f(x)$ be an irreducible polynomial over a field $F$ and let $E$ be a splitting field of $f(x)$ over $F$. Then, all the zeros of $f(x)$ in $E$ have the same multiplicity.
+\end{proposition}
+\begin{proof}
+	Let $a$ and $b$ be distinct roots of $f(x)$ with $a$ having multiplicity $m$. Then, we can write $f(x)=(x-a)^mg(x)$. Then, there exists a morphism $\phi$ which takes $a\mapsto b$ and is identity over $F$. Then, we have 
+	\begin{equation*}
+		f(x) = \phi(f(x)) = \phi((x-a)^mg(x)) = (x-b)^m\phi(g(x))
+	\end{equation*}
+	this completes the proof.
+\end{proof}

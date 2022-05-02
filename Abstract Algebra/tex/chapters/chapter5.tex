@@ -1,0 +1,137 @@
+\begin{definition}[Permutation Group]
+	A \textit{permutation} of a set $A$ is a bijective function $\sigma:A\to A$. A \textit{permutation group} of a set $A$ is the set of permutations of $A$ that form a group under $\circ$, which is the binary operator for function composition.
+\end{definition}
+
+It is important to note that a permutation group need not contain all the permutations of the set $A$. For example, consider the group $D_4$. This group can be viewed as a subset of the permutations of $\{1,2,3,4\}$ where one can imagine the numbers to be the labels of the vertices of a square.\\
+But, in the case when the permutation group contains all the possible permutations of a set with $n$ elements, the group is termed \textit{symmetric group of degree $n$} and is denoted by $S_n$.\\
+
+In the subsequent discussion, we shall use the \textit{cycle notation} to specify permutations. For example, conisder the permutation 
+$$
+\alpha =
+\begin{bmatrix}
+	1 & 2 & 3 & 4 & 5 & 6\\
+	2 & 1 & 4 & 6 & 5 & 3
+\end{bmatrix}
+$$
+The above permutation can be broken into the following cycles
+
+\begin{align*}
+	1\mapsto2\mapsto1\\
+	3\mapsto4\mapsto6\mapsto3\\
+	5\mapsto5		
+\end{align*}
+
+The above cycles are represented as follows 
+\begin{equation*}
+	(1,2)(3,4,6)(5)
+\end{equation*}
+
+Note how we were able to breakdown the given permutation into a product of disjoint cycles, as you may have already conjectured:
+\begin{proposition}
+	Every permutation of a finite set can be written as a cycle or as a product of disjoint cycles.
+\end{proposition}
+\begin{proof}
+	Let $\sigma$ be a permutation of $\{1,2,\cdots,n\}$. Let $a_1\in A$. Consider the set 
+	$$
+	\{a_1,\sigma(a_1),\sigma^2(a_1),\cdots,\sigma^n(a_1)\}
+	$$
+	Due to the Pigeon-hole Principle, there must exist unequal non-negative indices $i$ and $j$ such that $\sigma^i(a_1)=\sigma^j(a_1)$. But, since $\sigma$ is a bijective and hence invertible function, we can write $\sigma^{|i-j|}(a_1)=a_1$ where $|i-j|\ne0$. Thus, we have found a cycle.\\
+	Continuing similarly in this fasion, we note that the number of elements which are not in a cycle after each iteration strictly decreases and hence, must end at some point. THus, we have divided the permutation into a product of disjoint cycles.
+\end{proof}
+
+\begin{proposition}[Disjoint Cycles Commute]
+	If the pair of cycles $\alpha$ and $\beta$ have no entries in common, then $\alpha\beta=\beta\alpha$.
+\end{proposition}
+\begin{proof}
+	Say both $\alpha$ and $\beta$ are permutations of the set $S$. Let $a\in S$. If $a\notin(\alpha\cup\beta)$, then $\alpha\beta(a)=a=\beta\alpha(a)$. Else, if $a\in\alpha$, then $\alpha(\beta(a)) = \alpha(a)$ and $\beta(\alpha(a))=\alpha(a)$. Similarly proceeding for the case when $a\in\beta$, we have the desired conclusion.
+\end{proof}
+
+\begin{lemma}
+	The order of a cycle of length $n$ is $n$.
+\end{lemma}
+\begin{proof}
+	Trivial.
+\end{proof}
+
+\begin{theorem}[Ruffini 1799]
+	The order of a permutation of a finite set written in disjoint cycle form is the least common multiple of the lengths of the cycles.
+\end{theorem}
+\begin{proof}
+	Call the permutation of a set $S$, $\sigma$. Using \textbf{Proposition 5.27}, we can conclude that there exist disjoint cycles $\alpha_1,\alpha_2,\cdots,\alpha_k$ such that 
+	$$
+	\sigma = \alpha_1\alpha_2\cdots\alpha_k
+	$$
+	Say the order of $\sigma=M$, then, using the fact that disjoint cycles commute, we can write 
+	$$
+	\varepsilon = \alpha_1^M\alpha_2^M\cdots\alpha_k^M
+	$$
+	Let $a\in \bigcup_{i=1}^{k}\alpha_i$. Since $a$ can be an element of exactly one of the $\alpha_i's$, then $a=\sigma(a)=\alpha_j^M(a)$ for some $j$. This obviously means that $\alpha_j^M=\varepsilon$ and equivalently, $\ell(\alpha_j)\mid M$. We now have the desired conclusion.
+\end{proof}
+
+\begin{lemma}
+	Every (non-identity) cycle can be written as a product of $2$-cycles.
+\end{lemma}
+\begin{proof}
+	Just notice that 
+	$$
+	(a_1a_2\cdots a_n)=(a_1a_2)(a_2a_3)\cdots(a_{n-1}a_{n})
+	$$
+\end{proof}
+
+As a corollary of the above lemma, we have the following result (which is more popular than the lemma)
+\begin{proposition}
+	Every permutation in $S_n$ is a product of $2$-cycles.
+\end{proposition}
+
+\begin{lemma}
+	If $\varepsilon=\beta_1\beta_2\cdots\beta_r$ where the $\beta$'s are $2$-cycles, then $r$ is even.
+\end{lemma}
+\begin{proof}[Proof due to Joseph A. Gallian]
+	We proceed by induction on $r$. The base case, with $r=2$ is trivial. Suppose now that $r>2$. Assume that $\beta_r=ab$. Then, we may have the following cases for the value of $\beta_{r-1}\beta_r$.
+	\begin{align*}
+		\varepsilon = (ab)(ab)\\
+		(ab)(bc) = (ac)(ab)\\
+		(ac)(cb) = (bc)(ab)\\
+		(ab)(cd) = (cd)(ab)
+	\end{align*}
+	In the first case, we simply delete $\beta_{r-1}$ and $\beta_{r}$ from the original product and would be left with a product of $r-2$ cycles which give the identity. Thus, we should be done by strong induction.\\
+	Otherwise, note that the last cycle containing $a$ has now shifted to the left by $1$. Repeat the previous step again for $\beta_{r-2}\beta_{r-1}$ which should either give the product of the two as $\varepsilon$ or shift $a$ to the left once again. Note that $a$ cannot be shifted to the left indefinitely, and hence we must reach a product of $\varepsilon$ atleast once. Once that product is reached, apply strong induction on the remaining $r-2$ terms and we are done.
+\end{proof}
+
+\begin{proposition}
+	If a permutation $\alpha$ can be expressed as a product of an even (odd) number of $2$-cycles, then every decomposition of $\alpha$ into a product of $2$-cycles must have an even (odd) number of $2$-cycles. In symbols, if 
+	$$
+	\sigma = \beta_1\beta_2\cdots\beta_r = \gamma_1\gamma_2\cdots\gamma_s
+	$$
+	Then, $r\equiv s\pmod2$.
+ \end{proposition}
+\begin{proof}
+	Note that 
+	\begin{align*}
+		\beta_1\beta_2\cdots\beta_r &= \gamma_1\gamma_2\cdots\gamma_s\\
+		\varepsilon &= \gamma_1\gamma_2\cdots\gamma_s\beta_r\beta_{r-1}\cdots\beta_1
+	\end{align*}
+	Using \textbf{Lemma 5.33}, we can conclude that $r+s\equiv0\pmod2$ and we have the desired conclusion.
+\end{proof}
+
+\begin{definition}[Even and Odd Permutations]
+	A permutation that can be expressed as a product of an even number of $2$-cycles is called an \textit{even} permutation. A permutation that can be expressed as a product of an odd number of $2$-cycles is called an \textit{odd} permutation.
+\end{definition}
+
+\begin{proposition}
+	The set of even permutations in $S_n$ forms a subgroup of $S_n$.
+\end{proposition}
+\begin{proof}
+	Note first that the composition of any even permutation is also an even permutation due \textbf{Proposition 5.34}, this implies closure. Further, since the set of even permutations is a subset of the group of all permutations, we can conclude that $\circ$, which is the binary operator for function composition is associative on the set of even permutations. The identity element which is $\varepsilon$ is also an even permutation, due to \textbf{Lemma 5.33} and must be an element in the set of even permutations. Let $\sigma=\beta_1\beta_2\cdots\beta_r$ then easily note that $\sigma^{-1}=\beta_r\beta_{r-1}\cdots\beta_1$ and hence, the set of all even permutations in $S_n$ forms a subgroup of $S_n$.
+\end{proof}
+
+\begin{definition}
+	The group of even permutations of $\{1,2,\cdots,n\}$ is denoted by $A_n$ and is called the \textit{alternating group of degree $n$}.
+\end{definition}
+
+\begin{proposition}
+	For $n>1$, $A_n$ has order $n!/2$.
+\end{proposition}
+\begin{proof}
+	Let $c$ be any $2$-cycle. Note that if $a\in A_n$, then $ca\notin A_n$, conversely, if $ca\notin A_n$, then $a\in A_n$, since $c$ is an invertible function. Thus, there is a bijection from $A_n$ to $\overline{A_n}$. This completes the proof.
+\end{proof}

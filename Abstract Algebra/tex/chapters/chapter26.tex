@@ -1,0 +1,118 @@
+\begin{definition}
+	An $(n,k)$ linear code over a finite field $F$ is a $k-$dimensional subspace $V$ of the vector space
+	\begin{equation*}
+		F^n = \underbrace{F\oplus F\oplus\cdots\oplus F}_{n\text{ copies}}
+	\end{equation*}
+	over $F$. The members of $V$ are called \textit{code words}. When $F$ is $\Z_2$, the code is called binary.
+\end{definition}
+
+\begin{definition}[Hamming Distance and Hamming Weight]
+	The \textit{Hamming Distance} between two vectors in $F^n$ is the number of components in which they differ. The \textit{Hamming Weight} of a vector is the number of nonzero components of the vector. The \textit{Hamming Weight} of a linear code is the minimum weight of any nonzero vector in the code.
+\end{definition}
+
+\begin{proposition}
+	For any vectors $u$, $v$ and $w$, $d(u,v)\le d(u,w)+d(w,v)$ and $d(u,v) = \wt(u-v)$
+\end{proposition}
+\begin{proof}
+	The second equality is obvious. As for the first, note for the $i$-th position, if $u$ and $v$ disagree, and $u$ agrees with $w$ then $v$ and $w$ must disagree.
+\end{proof}
+
+\begin{proposition}
+	If the \textit{Hamming Weight} of a linear code is at least $2t+1$, then the code can correct any $t$ or fewer errors. Alternatively, the same code can detect any $2t$ or fewer errors.
+\end{proposition}
+\begin{proof}
+	We shall use nearest-neighbour decoding for this. Which means, for any vector $v$, we shall send a codeword $v'$ such that the Hamming Distance $d(v,v')$ is minimum. If there is more than one $v'$, we do not decode. Suppose the codeword $u$ is received as $v$ and had atmost $t$ errors, implying that $d(u,v)\le t$. Suppose now that $w$ is some other code word not equal to $u$, then
+	\begin{equation*}
+		2t+1\le\wt(w-u) = d(w, u) \le d(w,v) + d(v,u) \le d(w,v) + t
+	\end{equation*}
+	implying that $d(w,v)\ge t+1>d(v,u)$. And hence $v$ is correctly decoded as $u$.\\
+	As for the second prat, suppose the code word $u$ is received as the vector $v$ with atleast one error, but no more than $2t$ errors. That would imply $d(v,u)\le 2t$. THen we would know that $v$ cannot be a code word, since the Hamming Weight, that is the minimum distance between two code words is $2t+1$, a contradiction. Thus we have been able to detect that there are errors.
+\end{proof}
+
+\section*{Generator Matrix}
+A generator matrix, $G$ is basically a $k\times n$ matrix with linearly independant rows that carries $F^k$ to a $k-$dimensional subset of $F^n$.\\
+The Generator matrix is usually of the form
+\begin{equation*}
+	\left[I_k\mid A_{[k\times(n-k)]}\right]
+\end{equation*}
+Thus, the actual $k$ information digits occur at the beginning of the code-word.\\
+As an example, consider the $(6,3)$ linear code over $\Z_2$ given by the following generator matrix
+\begin{equation*}
+	\begin{bmatrix}
+		1 & 0 & 0 & 1 & 1 & 0\\
+		0 & 1 & 0 & 1 & 0 & 1\\
+		0 & 0 & 1 & 1 & 1 & 1
+	\end{bmatrix}
+\end{equation*}
+which is responsible for the following encoding \\
+\begin{center}
+	\begin{tabular}{ccc}
+		000 & $\mapsto$ & 000000\\
+		001 & $\mapsto$ & 001111\\
+		010 & $\mapsto$ & 010101\\
+		011 & $\mapsto$ & 011010\\
+		100 & $\mapsto$ & 100110\\
+		101 & $\mapsto$ & 101001\\
+		110 & $\mapsto$ & 110001\\
+		111 & $\mapsto$ & 111100
+	\end{tabular}
+\end{center}
+
+\section*{Parity Check Matrix Decoding}
+Since we are able to encode messages with a generator matrix, w eneed a convenient method for decoding them. In the case where at most one error percode word has occurred, there is a simple method to get this done.\\
+Now, suppose $V$ is a systematic linear code over a field $F$ due to the standard generator matrix $G=\left[I_k\mid A\right]$. Then, the matrix 
+\begin{equation*}
+	H = \left[\frac{-A}{I_{n-k}}\right]
+\end{equation*}
+where all operations are done in $F$.
+
+Consider now the following procedure
+\begin{enumerate}
+	\item For any received word $w$, compute $wH$.
+	\item If $wH$ is the zero vector, assume that no error was made.
+	\item If there is exactly one instance of a nonzero element $s\in F$, which is in the $i$-th row of $wH$, then we assume that the sent word was $w - (00\cdots0s00\cdots0)$ where $s$ occurs as the $i$-th component.
+	\item If $wH$ doesn't fit into any of the above categories, then the number of errors is greater than 1.
+\end{enumerate}
+
+\begin{lemma}[Orthogonality Relation]
+	Let $C$ be a systematic $(n,k)$ linear code over $F$ with a standard generator matrix $G$ and parity-check matrix $H$. Then, for any vector $v$ in $F^n$, we hae $vH = 0$ if and only if $v\in C$.
+\end{lemma}
+\begin{proof}
+	The proof is straightforward, with the method of contradiction.
+\end{proof}
+
+Using the above lemma, it is possible to prove the following theorem.
+
+\begin{theorem}[Parity-Check Matrix Decoding]
+	Parity-Check matrix decoding will correct any single erro if and only if the rows of the parity check-matrix are non-zero and no one row is a scalar multiple of any other row.
+\end{theorem}
+
+\section*{Coset Decoding}
+This method is attributed to David Slepian and is also referred to as ``standard decoding". We create a table called the ``standard array". Let $V = F^n$. The first row of the table is the set $C$ of code words, beginning in column $1$ with the identity $00\cdots0$. To form the next row, select an elemtn $v$ of $V$ which is not listed in the table so far. Among all the elements of $v+C$, select $v'$ with minimum weight. Then add $v'$ to the previous row and form the next row. Repeat this procedure until all the elements of $V$ have been exhausted.\\
+The decoding procedure is to take the element in the first row of the column in which the word $w$, which has been received is present.\\
+The words in the first column are called the \textit{coset leaders}.
+
+
+\begin{proposition}
+	In coset decoding, a received word $w$ is decoded as a code word $c$ suc hthat $d(w,c)$ is minimum. That is, it is the same as nearest-neighbour decoding.
+\end{proposition}
+\begin{proof}
+	Let $C$ be a linear code and $w$ be the received word. Suppose that $v$ is the coset leader for the coset $w+C$. Then, there must exist $c\in C$ such that $w = v + c$. Now, if $c'$ is any code word then $w-c'\in w+C$ and that would mean that $\wt(w-c')\ge \wt(v)$. And thus,
+	\begin{equation*}
+		d(w,c') = \wt(w-c') \ge \wt(v) = d(w,c)
+	\end{equation*}
+\end{proof}
+
+\begin{definition}
+	If an $(n,k)$ linear code over $F$ has parity-check matrix $H$, then for any vector $u$ in $F^n$, the vector $uH$ is called the \textit{syndrome} of $u$.
+\end{definition}
+
+\begin{proposition}
+	Let $C$ be an $(n,k)$ linear code over $F$ with a parity-check matrix $H$. Then, two vectors of $F^n$ are in the same coset of $C$ if and only if they have the same syndrome.
+\end{proposition}
+\begin{proof}
+	$u$ and $v$ are in the same coset of $C$ if and only if $u-v$ is in $C$. But due to the Orthogonality Lemma, we would have that 
+	$$
+	0 = (u-v)H = uH - vH
+	$$
+\end{proof}

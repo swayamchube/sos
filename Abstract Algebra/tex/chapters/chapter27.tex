@@ -1,0 +1,57 @@
+Some proofs in this chapter and the next are long and boring. I shall leave such proofs out in order to keep the reader engaged.
+
+\begin{definition}[Automorphism, Galois Group, Fixed Field]
+	Let $E$ be an extensionn field of the field $F$. An \textit{automorphism} of $E$ is a ring isomorphism from $E$ onto $E$. The \textit{Galois Group} of $E$ over $F$, given by $\Gal(E/F)$, is the set of all automorphisms of $E$ that take every element of $F$ to itself. If $H$ is a subgroup of $\Gal(E/F)$, the set 
+	\begin{equation*}
+		E_H = \{x\in E\mid \phi(x) = x\qquad\forall\phi\in H\}
+	\end{equation*}
+\end{definition}
+
+The following theorem is the highlight of this chapter and is also quite a mouthful
+
+\begin{theorem}[Fundamental Theorem of Galois Theory]
+	Let $F$ be a field of characteristic $0$ or a finite field. If $E$ is the splitting field over $F$ for some polynomial in $F[x]$, then the mapping from the set of subfields of $E$ containing $F$ to the set of subgroups of $\Gal(E/F)$ given by $K\to\Gal(E/K)$ is a one-to-one correspondence. Furthermore, for any subfield $K$ of $E$ containing $F$,
+	\begin{enumerate}
+		\item $[E:K] = |\Gal(E/K)|$ and $[K:F]=|\Gal(E/F)|/|\Gal(E/K)|$.
+		\item If $K$ is the splitting field of some polynomial in $F[x]$, then $\Gal(E/K)$ is a normal subgroup of $\Gal(E/F)$ and $\Gal(K/F)$ is isomorphic to $\Gal(E/F)/\Gal(E/K)$.
+		\item $K = E_{\Gal(E/K)}$
+		\item If $H$ is a subgroup of $\Gal(E/F)$, then $H = \Gal(E/E_H)$.
+	\end{enumerate}
+\end{theorem}
+
+\begin{definition}[Solvable by Radicals]
+	Let $F$ be a field, and let $f(x)\in F[x]$. We say that $f(x)$ is \textit{solvable by radicals} over $F$ if $f(x)$ splits in some extension $F(a_1,a_2,\cdots,a_n)$ of $F$ and there exist positive integers $k_1,k_2,\cdots,k_n$ such that $a_1^{k_1}\in F$ and $a_i^{k_i}\in F(a_1,\cdots,a_{i-1})$.
+\end{definition}
+
+\begin{definition}
+	We say that a group is \textit{solvable} if $G$ has a series of subgroups 
+	\begin{equation*}
+		\{e\} = H_0\subset H_1\subset H_2\subset\cdots\subset H_k=G
+	\end{equation*}
+	where, for each $0\le i < k$, $H_i$ is normal in $H_{i+1}$ and $H_{i+1}/H_{i}$ is Abelian.
+\end{definition}
+
+Again, the proof of the following theorem has been omitted for the aforementioned reason.
+\begin{proposition}
+	Let $F$ be a field of characteristic $0$ and let $a\in F$. If $E$ is the splitting field of $x^n-a$ over $F$, then the Galois Group $\Gal(E/F)$ is solvable.
+\end{proposition}
+
+\begin{proposition}
+	Let $G$ be a group and $N\vartriangleleft G$. If both $N$ and $G/N$ are solvable, then $G$ is solvable.
+\end{proposition}
+
+\begin{theorem}[Galois]
+	Let $F$ be a field of characteristic $0$ and let $f(x)\in F[x]$. Supppose that $f(x)$ splits in $F(a_1,a_2,\cdots,a_t)$ where $a_1^{n_1}\in F$ and $a_i^{n_i}\in F(a_1,\cdots,a_{i-1})$. Let $E$ be the splitting field for $f(x)$ over $F$ in $F(a_1,a_2,\cdots,a_t)$. Then the Galois Group $\Gal(E/F)$ is solvable.
+\end{theorem}
+
+\begin{lemma}
+	$S_5$ is not a solvable group.
+\end{lemma}
+
+\section*{The Quintic is NOT Solvable}
+Now that we have declared all our ammunition, it only remains to put it all together to solve this problem. The following proof is not that hard in the first place, but proving the previous theorems, especially \textbf{Theorem 27.209} is where all the difficulty lies.\\
+Let $g(x)\in\Z[x]$ be an integer polynomial of degre $5$ with the 5 zeroes being $a_1,a_2,\cdots,a_5$. Since any automorphism of $K = Q(a_1,\cdots,a_5)$ is completely determined by its action on the $a_i$'s and must permute the $a_i$'s we must have that $\Gal(K/Q)$ is isomorphic to a subgroup of $S_5$. Furthermore we know that $[Q(a_1):Q] = 5$ and hence $5$ divides $[K:Q]$. And due to the Fundamental Theorem of Galois Theory, we know that 5 must divide $|\Gal(K/Q)|$. Now due to Cauchy's Theorem, $\Gal(K/Q)$ has an element of order $5$. The only element in $S_5$ of order $5$ is the cycle of length $5$, $\Gal(K/Q)$ must contain a $5$ cycle. But since the transformation $a+bi\mapsto a-bi$ is also an element of $\Gal(K/Q)$, we know that it contains both a 5-cycle and a 2-cycle implying that it is isomorphic to $S_5$. But due to the preceeding lemma, we are done.
+
+\begin{definition}
+	This is a random definition
+\end{definition}

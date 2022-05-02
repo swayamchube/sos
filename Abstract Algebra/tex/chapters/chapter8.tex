@@ -1,0 +1,51 @@
+\begin{definition}[External Direct Product]
+	Let $G_1,G_2,\cdots,G_n$ be a finite collection of groups. The \textit{external direct product} of $G_1,G_2,\cdots,G_n$, written as $G_1\oplus G_2\oplus\cdots\oplus G_n$, is the set of all $n$-tuples for which the $i$-th component is an element of $G_i$ and the operation is componentwise.
+\end{definition}
+
+In symbols, we can write 
+$$
+G_1\oplus G_2\oplus\cdots\oplus G_n = \left\{\left(g_1,g_2,\cdots,g_n\right)\mid g_i\in G_i\right\}
+$$
+
+\begin{proposition}
+	$G_1\oplus G_2\oplus\cdots\oplus G_n$ is a group.
+\end{proposition}
+The proof is elementary and is left as an exercise for the reader.
+
+\begin{proposition}
+	The order of an element in a direct product of a finite number of finite groups is the least common multiple of the orders of the components of the element. In symbols,
+	$$
+	|(g_1,g_2,\cdots,g_n)| = \lcm\{|g_1|,|g_2|,\cdots,|g_n|\}
+	$$
+\end{proposition}
+\begin{proof}
+	Let $e_i$ denote the identity element of the group $G_i$. Say the order of $(g_1,g_2,\cdots,g_n)$ is $M$. It is then trivial to show that $|g_i|$ must divide $M$ for all permissible $i$. And in that case, the smallest positive value of $M$ satisfying the same is defined as $\lcm\{|g_1|,|g_2|,\cdots,|g_n|\}$.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ and $H$ be finite cyclic groups. Then $G\oplus H$ is cyclic if and only if $|G|$ and $|H|$ are relatively prime.
+\end{proposition}
+\begin{proof}
+	Let $G=\langle g\rangle$ nad $H=\langle h\rangle $. If $|G|$ and $|H|$ are coprime, then we claim that $G\oplus H=\langle(g,h)\rangle$. Indeed, consider an element of $G\oplus H$ of the form $(g^a,h^b)$. We would like to find a suitable $x$ such that $(g^{x},h^{x})=(g^a,h^b)$. But, this is equivalent to 
+	\begin{align*}
+		x&\equiv a\pmod{|G|}\\
+		x&\equiv b\pmod{|H|}
+	\end{align*}
+	Since $|G|$ and $|H|$ are coprime, we are done due to the Chinese Remainder Theorem.\\
+	On the other hand, suppose $G\oplus H$ is cyclic and let $\gcd(|G|,|H|)=d$ and $(g,h)$ be the generator for the same. Then, $(g,h)^{|G||H|/d}=(e,e)$ and hence 
+	$$
+	|G||H| = |(g,h)|\le|G||H|/d
+	$$
+	forcing $d=1$ and $|G|$ and $|H|$ to be coprime.
+\end{proof}
+Using simple induction, one can show
+\begin{corollary}
+	An external direct product $G_1\oplus G_2\oplus\cdots\oplus G_n$ of a finite number of finite cyclic groups is cyclic if and only if $|G_i|$ and $|G_j|$ are coprime whenever $i\ne j$.
+\end{corollary}
+
+\begin{proposition}
+	Suppose $s$ and $t$ are relatively prime. Then $U(st)$ is isomorphic to the external direct product of $U(s)$ and $U(t)$. That is, $U(st)\cong U(s)\oplus U(t)$.
+\end{proposition}
+\begin{proof}
+	Consider the mapping $\phi:U(st)\mapsto U(s)\oplus U(t)$ which is given by $x\stackrel{\phi}{\mapsto}\left(s\left\{\frac{x}{s}\right\},t\left\{\frac{x}{t}\right\}\right)$. The map is surjective due to the Chinese Remainder Theorem. As for injectivity, suppose the images of $x,y\in U(st)$ are the same, then $s\mid x-y$ and $t\mid x-y$, or equivalently, $st\mid x-y$. But since both $x$ and $y$ are strictly smallar than $st$, this is possible if and only if $x=y$ and we have proved injectivity. Thus $\phi$ is bijective and is an isomorphism.
+\end{proof}

@@ -1,0 +1,114 @@
+\begin{definition}[Polynomial Rings]
+	Let $R$ be a commutative ring. The set of formal symbols
+	\begin{equation*}
+		R[x] = \{a_nx^n+\cdots+a_1x+a_0\mid a_i\in R, n\in\N_0\}
+	\end{equation*}
+	is called the ring of polynomials over $R$ in the indeterminate $x$.\\
+	Two elements 
+	\begin{equation*}
+		a_nx^n+\cdots+a_1x+a_0
+	\end{equation*}
+	and 
+	\begin{equation*}
+		b_mx^m +\cdots+b_1x+b_0 
+	\end{equation*}
+	of $R[x]$ are considered equal if and only if $a_i=b_i$ for all non-negative integers $i$.
+\end{definition}
+
+We now define the `multiplication' and `addition' associated with the ring
+\begin{definition}
+	Let $R$ be a commutative ring and let 
+	\begin{equation*}
+		f(x) = a_nx^n + \cdots + a_1x + a_0
+	\end{equation*}
+	and
+	\begin{equation*}
+		g(x) = b_mx^m + \cdots + b_1x + b_0
+	\end{equation*}
+	be elements of $R[x]$. Then
+	\begin{equation*}
+		f(x) + g(x) = (a_s+b_s)x^s + \cdots + (a_1+b_1)x + a_0+b_0
+	\end{equation*}
+	where $s$ is the maximum of $m$ and $n$. Also
+	\begin{equation*}
+		f(x)g(x) = c_{m+n}x^{m+n} + \cdots + c_1x + c_0
+	\end{equation*}
+	where
+	\begin{equation*}
+		c_k = a_kb_0 + a_{k-1}b_1 + \cdots + a_0b_k
+	\end{equation*}
+\end{definition}
+
+\begin{definition}
+	Let $f(x)\in R[x]$. If 
+	\begin{equation*}
+		f(x) = a_nx^n + \cdots + a_1x + a_0
+	\end{equation*}
+	where $a_n\ne0$, we say that $f(x)$ has \textit{degree} $n$. The term $a_n$ is called the \textit{leading coefficient} of $f(x)$. Polynomials of the form $g(x)=a_0$ are called \textit{constant} polynomials.
+\end{definition}
+
+\begin{proposition}
+	If $D$ is an integral domain, then $D[x]$ is an integral domain.
+\end{proposition}
+\begin{proof}
+	Since $D$ is commutative, it is clear that $D[x]$ is commutative as well. Furthermore, the constant polynomial $e(x)=1$ serves as the unity of the ring. We now only need to show that the ring doesn't have any zero divisors. Indeed, consider 
+	\begin{equation*}
+		f(x) = a_nx^n + \cdots + a_1x + a_0
+	\end{equation*}
+	and
+	\begin{equation*}
+		g(x) = b_mx^m + \cdots + b_1x + b_0
+	\end{equation*}
+	where $a_n\ne0$ and $b_m\ne0$. Then the polynomial $f(x)g(x)$ shall have the leading coefficient as $a_nb_m$ which must be non-zero since $D$ is an integral domain. This completes the proof.
+\end{proof}
+
+\begin{proposition}
+	Let $F$ be a field and let $f(x),g(x)\in F[x]$ with $g(x)\ne0$. Then there exist unique polynomials $q(x)$ and $r(x)$ in $F[x]$ such that $f(x) = g(x)q(x) + r(x)$ and either $r(x)=0$ or $\deg r(x)<\deg g(x)$.
+\end{proposition}
+\begin{proof}
+	We first show the existence of $q(x)$ and $r(x)$. If $f(x)=0$ or $\deg f(x)<\deg g(x)$, we simply set $q(x)=0$ and $r(x)=f(x)$. We shall now prove the statement by strong induction on the degree of $f(x)$. Say $\deg f(x) = n>m=\deg g(x)$. Then, consider $f_1(x) = f(x) - a_nb_n^{-1}x^{n-m}g(x)$. Then $\deg f_1(x)<\deg f(x)$ and by the induction hypothesis, there exist $q_1(x)$ and $r_1(x)$ such that $f_1(x) = g(x)q_1(x) + r_1(x)$. But then, we trivially have that $f(x) = (a_nb_m^{-1}x^{n-m}+q_1(x))g(x)+r_1(x)$. Thus, we have established the existence of $q$ and $r$ for some $f$ and $g$. We shall now uniqueness. Assume now that 
+	$$
+	f(x) = g(x)q(x)+r(x) \qquad \text{and} \qquad f(x) = g(x)\overline{q}(x)+\overline{r}(x)
+	$$
+	Substracting the two, we obtain
+	$$
+	g(x)\left(q(x)-\overline{q}(x)\right) = \overline{r}(x) - r(x)
+	$$
+	Suppose that $\overline{r}(x)-r(x)\ne0$, then it must have degree atleast that of $g(x)$ which is absurd. Hence $\overline{r}(x)=r(x)$ and $\overline{q}(x) = q(x)$. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field, $a\in F$, and $f(x)\in F[x]$. Then $f(a)$ is the remainder in the division of $f(x)$ by $x-a$.
+\end{corollary}
+\begin{proof}
+	Easy enough by induction on the degree of $f(x)$.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field, $a\in F$ and $f(x)\in F[x]$. Then $a$ is a zero of $f(x)$ if and only if $x-a$ is a factor of $f(x)$.
+\end{corollary}
+
+\begin{proposition}
+	A polynomial of degree $n$ over a field has at most $n$ zeros, counting multiplicity.
+\end{proposition}
+\begin{proof}
+	We shall proceed by induction on $n$. The base case with $n=0$ and $n=1$ are trivial. Assume now that the statement holds true for all $k<n$. Let $f(x)$ be a polynomial with degree $n$. Let $a$ be a root of $f$ multiplicity $k$, that is to say $f(x) = (x-a)^kq(x)$ such that $q(a)\ne0$. It is obvious that $\deg q = n-k<n$ and hence $q$ can have atmost $n-k$ zeroes due to the inductive hypothesis and hence $f$ must have at most $n-k+k = n$ zeroes. This completes the proof.
+\end{proof}
+
+\begin{definition}
+	A \textit{principal ideal domain} is an integral domain $R$ in which every ideal has the form $\langle a\rangle = \{ra\mid r\in R\}$ for some $a\in R$.
+\end{definition}
+
+\begin{proposition}
+	Let $F$ be a field. Then $F[x]$ is a principal ideal domain.
+\end{proposition}
+\begin{proof}
+	Due to the first result in this chapter we know that $F[x]$ must be an integral domain. Let $I$ be an ideal in $F[x]$. If $I=\{0\}$, then $I=\langle0\rangle$. If $I\ne\{0\}$, then among all the elements of $I$, choose $g$ to have minimal degree. We shall show that $I=\langle g(x)\rangle$. Say $f(x)\in I$, then due to the division algorithm, we can write $f(x)= g(x)q(x) + r(x)$. Since $I$ is an ideal, $g(x)q(x)\in I$ and hence $r(x)\in I$. But we know that either $r(x)=0$ or $\deg r(x)<\deg g(x)$ in which case, the second statement would contratict the minimality of the degree of $g(x)$ and hence $r(x)=0$ and this completes the proof.
+\end{proof}
+
+\begin{proposition}
+	Let $F$ be a field, $I$ a nonzero ideal in $F[x]$, and $g(x)$ an element of $F[x]$. Then $I=\langle g(x)\rangle$ if and only if $g(x)$ is a non-zero polynomial of minimum degree in $I$.
+\end{proposition}
+\begin{proof}
+	Corollary of the proof of the previous result.
+\end{proof}

@@ -1,0 +1,56 @@
+\begin{theorem}[Fundamental Theorem of Finite Abelian Groups]
+	Every finite Abelian group is a direct product of cyclic groups of prime-power order. Moreover, the number of terms in the product and the orders of the cyclic groups are uniquely determined by the group.
+\end{theorem}
+
+The proof of the above theorem requires the following four lemmas:
+\begin{lemma}
+	Let $G$ be a finite Abelian group of order $p^nm$ where $p$ is a prime that does not divide $m$. Then, $G=H\times K$, where $H=\{x\in G\mid x^{{p^n}}=e\}$ and $K=\{x\in G\mid x^m=e\}$. Moreover, $|H|=p^n$.
+\end{lemma}
+\begin{proof}
+	Since, we are given that $p\nmid m$, we know that $\gcd(m,p^n)=1$, and due to B\'ezout's Lemma, there exist integers $s$ and $t$ such that $sm+tp^n=1$. Thus, for any $x\in G$, we have 
+	$$
+	x = x^{1} = x^{sm+tp^n} = x^{sm} x^{tp^n}
+	$$
+	Now, due to Lagrange's theorem, $x^{sm}\in H$ and $x^{tp^n}\in K$. Thus, $G=HK$. Let $z\in H\cap K$, then, we know that $|z|$ divides $\gcd(m,p^n)$ or equivalently, $|z|=1$ and thus, $z=e$. And hence, we can write $G=H\times K$.\\
+	As for the second part, we shall use \textbf{Proposition 7.51}, which immediately gives the desired conclusion.
+\end{proof}
+
+\begin{lemma}
+	Let $G$ be an Abelian group of prime-power order and let $a$ be an element of maximum order in $G$. Then $G$ can be written in the form $\langle a\rangle\times K$.
+\end{lemma}
+\begin{proof}
+	Say $|G|=p^n$ where $p$ is a prime. We shall induct on $n$. When $n=1$, $G=\langle a\rangle\times\langle e\rangle$. Now, assume the hypothesis is true for all $k<n$. Among all the elements of $G$, choose the element of maximum order $p^m$. Then, we know that $g^{p^m}=e$ for all $g\in G$. We may now assume that $G\ne\langle a\rangle$, since this case is trivial. Let $b\in G\backslash\langle a\rangle$ such that $|b|$ is minimum. We further know that $|b^p|<|b|$ and hence $b^p\in\langle a\rangle$. Say $b^p=a^i$. Then, we can write 
+	$$
+	e=b^{p^{m}}=a^{ip^{m-1}}
+	$$
+	and thus, $p\mid i$. Let $i=pj$. Then $b^p=a^{pj}$, or, $(a^{-j}b)^p=e$ (since $G$ is abelian). Let $c=a^{-j}b$. Obviously $c\notin\langle a\rangle$. Since $b$ was chosen to have minimum order, the order of $b$ must be $p$, else $c$ would have smaller order than $b$, an obvious contradiction. Now, if $\langle a\rangle\cap\langle b\rangle\ne\{e\}$ then there would exist an element $z$ in both which generates $\langle b\rangle$ implying $b\in\langle a\rangle$ which is absurd.\\
+	Now consider the factor group $\overline{G}=G/\langle b\rangle$. Let $\overline{x}$ denote the coset $x\langle b\rangle$ in $\overline{G}$. If $|\overline{a}|<|a|=p^m$, then $\overline{a}^{p^{m-1}}=\overline{e}$. This means that $a^{p^{m-1}}\in\langle a\rangle\cap\langle b\rangle=\{e\}$ which is a contradiction. Thus, $|\overline{a}|=|a|=p^m$ and thus, $\overline{a}$ is the element with maximum order in $\overline{G}$ and hence, $\overline{G}=\langle\overline{a}\rangle\times\overline{K}$. Let $K$ be the pullback of $\overline{K}$ under the natural homomorphism from $G$ to $\overline{G}$. We claim that $\langle a\rangle\cap K=\{e\}$. If $x\in\langle a\rangle\cap K$, then $\overline{x}\in\langle\overline{a}\rangle\cap\overline{K}=\{\overline{e}\}=\langle b\rangle$ and $x\in\langle a\rangle\cap\langle b\rangle=\{e\}$. It is now trivial to conclude that $G=\langle a\rangle\times K$. 
+\end{proof}
+
+\begin{lemma}
+	A finite Abelian group of prime-power order is an internal direct product of cyclic groups.
+\end{lemma}
+\begin{proof}
+	This follows from the previous lemma. That is, we know $G=\langle a\rangle\times K$ then we can write $K=\langle a'\rangle\times K'$ and so on, and this cannot go on indefinitely and hence we are done.
+\end{proof}
+
+\begin{lemma}
+	Suppose that $G$ is a finite Abelian group of prime-power order. If $G=H_1\times H_2\times\cdots\times H_m$ and $G=K_1\times K_2\times\cdots\times K_n$, then $m=n$ and $|H_i|=|K_i|$ for all $i$.
+\end{lemma}
+\begin{proof}
+	We shall proceed by induction on $|G|$. The base case when $|G|=p$ is true. Now suppose that the statement is true for all Abelian groups of order less than $|G|$. For any abelian group $L$, the set $L^p=\{x^p\mid x\in L\}$ is a subgroup of $L$. Now, it follows that 
+	$$
+	G^p=H_1^p\times H_2^p\times\cdots\times H_{m'}^p = K_1^p\times K_2^p\times\cdots\times K_{n'}^p
+	$$
+	where $m'$ is the maximum index $i$ such that $|H_i|>p$ and similarly define $n'$. Now, we know that $|G^p|<|G|$ and hence, $m'=n'$ by induction. Finally, note that we have 
+	$$
+	|G| = |H_1||H_2|\cdots|H_{m'}|p^{m-m'} = |K_1||K_2|\cdots|K_{n'}|p^{n-n'}
+	$$
+	This now obviously implies that $m=n$ and we are done.
+\end{proof}
+
+Finally, coming to the proof of the original theorem, from the first lemma in this chapter, we can write
+$$
+G = H_1\times H_2\times\cdots\times H_n
+$$
+where each $H_i$ have prime-power order. And, finally the number of groups, namely $n$ is uniquely determined due to the last lemma of the chapter. Thus, we have successfully proved the \textbf{Fundamental Theorem of Finite Abelian Groups}.

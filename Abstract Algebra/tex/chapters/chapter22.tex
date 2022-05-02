@@ -1,0 +1,40 @@
+\begin{proposition}
+	For each prime $p$ and each positive integer $n$, there is, up to isomorphism, a unique finite field of order $p^n$.
+\end{proposition}
+\begin{proof}
+	Consider the splitting field $E$ of $f(x)=x^{p^n}-x$ over $\Z_p$. Since $f(x)$ splits in $E$, every zero of $f$ must have multiplicity $1$ in $E$ and thus $f(x)$ has $p^n$ distinct zeroes in $E$. Now, the set of zeroes of $f$ in $E$ is closed under addition, substraction, multiplication and division and hence the set of zeroes of $f(x)$ is an extension field of $\Z_p$. Thus the set of zeroes of $f$ is $E$ and thus $|E|=p^n$\\
+	As for uniqueness, say $K$ is another field of the same order. Then $K$ has a asubfield isomorphic to $\Z_p$ and since the non-zero elements of $K$ form a multiplicative group of order $p^n-1$, every element of $K$ is a zero of $f(x)$ and hence $K$ must be a splitting field over $\Z_p$ for $f$. But we know that there is only one such field upto isomorphism.
+\end{proof}
+
+\begin{definition}
+	Since there is only one field, upto isomorphism of order $p^n$, we shall denote it using $GF(p^n)$, called the \textit{Galois Field of order $p^n$.}
+\end{definition}
+
+\begin{proposition}
+	As a group under addition, $GF(p^n)$ is isomorphic to 
+	\begin{equation*}
+		\underbrace{\Z_p\oplus\Z_p\oplus\cdots\oplus\Z_p}_{n-factors}
+	\end{equation*}
+	As a group under multiplication, the set of non-zero elements of $GF(p^n)$ is isomorphic to $\Z_{p^n-1}$ and hence, is cyclic.
+\end{proposition}
+\begin{proof}
+	Since $GF(p^n)$ has characteristic $p$, every non-zero element has additive order $p$. Then, by the Fundamental Theorem of Finite Abelian Groups, we have the desired conclusion.\\
+	We now come to the multiplicative group. First, due to the FUndamental Theorem of Finite Abelian Groups, $GF$ is isomorphic to a direct product of the form $\Z_{n_1}\oplus\cdots\oplus\Z_{n_m}$. If the orders are relatively prime, then it follows that $GF$ is cyclic. Suppose now that there exists $d$ which divides all $n_i$., then each of these components must have a subgroup of order $d$. Thus, equivalently, there exist $H$ and $K$ as subgroups of $GF$ of order $d$. Then each element of $H$ and $K$ is a zer oof $x^d-1$, contradicting the fact that a polynomial of degree $d$ over a field can have atmost $d$ zeros.
+\end{proof}
+
+\begin{corollary}
+	$$[GF(p^n):GF(p^n)]=n$$
+\end{corollary}
+
+\begin{proposition}
+	For each divisor $m$ of $n$, $GF(p^n)$ has a unique subfield of order $p^m$. Moreover, these are the only subfields of $GF(p^n)$.
+\end{proposition}
+\begin{proof}
+	If $m\mid n$, then $p^m-1\mid p^n-1$. Let $K=\{x\in GF(p^n)\mid x^{p^m}=x\}$. It is not hard to show that $K$ is a subfield of $GF$. Furthermore, since the polynomial $x^{p^m}-x$ has atmost $p^m$ zeros in $GF(p^n)$, we must have that $|K|\le p^m$. Now, let $\langle a\rangle = GF$, then $|a^{\frac{p^n-1}{p^m-1}}|=p^m-1$, or equivalently, it follows that $K$ is a subfield of $GF$ with order $p^m$.\\
+	Finally, now suppose that $F$ is a subfield of $GF$. Then $F$ must be isomorphic to $GF(p^m)$ for some $m$ and hence 
+	\begin{equation*}
+		n = [GF(p^n):GF(p^m)]\cdot m
+	\end{equation*}
+	And, thus, $m$ must divide $n$. 
+\end{proof}
+

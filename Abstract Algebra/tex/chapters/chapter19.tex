@@ -1,0 +1,40 @@
+This is basically MA 106.
+\begin{definition}[Vector Space]
+	A set $V$ is said to be a \textit{vector space} over a field $F$ if $V$ is an Abelian group under addition (denoted by $+$) and , if for each $a\in F$ and $v\in V$, there is an element $av\in V$ such that the following conditions hold for all $a,b\in F$ and all $u,v\in V$.
+	\begin{enumerate}
+		\item $a(u+v) = au+av$
+		\item $(a+b)v = av+bv$
+		\item $a(bv) = (ab)v$
+		\item $1v = v$
+	\end{enumerate}
+\end{definition}
+
+Following are some examples of vector spaces:
+\begin{itemize}
+	\item The set $\R^n = \{(a_1,a_2,\cdots,a_n)\mid a_i\in\R\}$ is a vector spcae over $\R$. Addition is component-wise while scalar multiplication is again component-wise.
+	\item The set $\Z[x]$ of integer polynomials where addition and scalar multiplication are trivially defined.
+	\item The set of complex numbers $\mathbb{C}$ is a vector space $\R$.
+\end{itemize}
+
+\begin{definition}[Subspace]
+	Let $V$ be a vector space over a field $F$ and let $U$ be a subset of $V$. We say that $U$ is a \textit{subspace} of $V$ if $U$ if also a vector space over $F$ under the operations of $V$.
+\end{definition}
+
+\begin{definition}[Linearly Dependant, Linearly Independant]
+	A set $S$ of vectors is said to be \textit{linearly dependant} over the field $F$ if there are vectors $v_1,v_2,\cdots,v_n$ from $S$ and elements $a_1,a_2,\cdots,a_n$ from $F$, not all zero such that $a_1v_1+a_2v_2+\cdots+a_nv_n = 0$. A set of vectors that is not linearly dependant over $F$ is called \textit{linearly independant}.
+\end{definition}
+
+\begin{definition}[Basis]
+	Let $V$ be a vector space over $F$. A subset $B$ of $V$ is called a \textit{basis} for $V$ if $B$ is linearly independant over $F$ and every element of $V$ is a linear combination of elements of $B$.
+\end{definition}
+
+\begin{proposition}
+	If $\{u_1,u_2,\cdots,u_m\}$ and $\{w_1,w_2,\cdots,w_n\}$ are both bases of a vector space $V$ over a field $F$, then $m=n$.
+\end{proposition}
+\begin{proof}
+	Suppose that $m\ne n$ and without loss of generality that $m<n$. Since the set of $u_i$'s span $V$, we can write $w_1$ as a linear combination of the $u_i$'s where not all weights are $0$. WLOG say the first weight (that of $u_1$) is non-zero, then $\{w_1,u_2,\cdots,u_m\}$ spans $V$. Continuing in this fashion for $w_1,w_2,\cdots,w_m$, we notice that $\{w_1,w_2,\cdots,w_n\}$ span $V$ which is a contradiction. This completes the proof.
+\end{proof}
+
+\begin{definition}[Dimension]
+	A vector space that has a basis consisting of $n$ elements is said to have \textit{dimension} $n$. For completeness, the trivial vector space $\{0\}$ is said to be spanned by the empty set and to have dimension $0$.
+\end{definition}

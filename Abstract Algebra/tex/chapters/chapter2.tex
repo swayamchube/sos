@@ -1,0 +1,102 @@
+In the previous chapter, we tried to develop the notion of a group in an informal way. In this chapter, we would like to formalize that same notion. For this, we begin with the definition of a binary operation
+\begin{definition}[Binary Operation]
+	Let $G$ be a set. A binary operation $\circ$ is simply a function~$\circ:G\times G\to G$ 
+\end{definition}
+
+Equipped with the above definition, we are now ready to define a group
+\begin{definition}
+	Let $G$ be a set and $\circ$ be a binary operation on $G$, then the ordered pair $(G,\circ)$ is said to be a group if the following conditions are satisfied:
+	\begin{enumerate}
+		\item\textit{Associativity.} For any three (not necessarily distinct) elements $a,b,c\in G$, $a\circ(b\circ c)=(a\circ b)\circ c$.
+		\item\textit{Identity.} There exists an element $e$ in $G$ such that $a\circ e=a=e\circ a$ for all elements $a\in G$.
+		\item\textit{Inverses.} For all elements $a\in G$, there exists $b\in G$ such that $a\circ b=e=b\circ a$.
+	\end{enumerate}
+\end{definition}
+
+By the way, note that the definition of a binary operation itself implies that the group is closed, so we need not provide a separate axiom for \textit{closure}.\\
+
+\textbf{Examples of Groups}
+\begin{enumerate}
+	\item $(\Z,+)$, $(\R,+)$, $(\Q,+)$
+	\item $(\R\backslash\{0\},\times)$ and $(\Q\backslash\{0\},\times)$
+	\item $(D_n,\circ)$ where $\circ$ is the binary operator for composition of symmetries.
+	\item $(GL(n,\R),\times)$ where $GL(n,\R)$ is the set of invertible square matrices of order $n$ with real entries and $\times$ is matrix multiplication. This group is called the \textit{general linear group} of $n\times n$ matrices over $\R$.
+\end{enumerate}
+
+\textbf{Examples of non-Groups}
+\begin{enumerate}
+	\item $(\N,+)$. Since there is no identity in $\N$.
+	\item $(\R,\times)$ and $(\Q,\times)$. Since $0$ does not have an inverse.
+\end{enumerate}
+
+\begin{exercise}
+	Let $U(n)$ denote the set of all natural numbers, less than or equal to $n$ which are coprime to $n$. Show that $(U(n),\cdot)$ where $\cdot$ is multiplication modulo $n$ forms a group.
+\end{exercise}
+\begin{proof}
+	Verifying closure is trivial. Further, it is easy to verify that $1\in U(n)$ is the required identity. Finally, we are left with proving the existance of inverses. Let $a\in U(n)$. Recall, from Bezout's Lemma, there must exist integers $x$ and $y$ such that 
+	$$
+	ax+ny=\gcd(a,n) = 1
+	$$
+	Reducing the above equation modulo $n$, we obtain (for some $x'>0$)
+	$$
+	ax'\equiv1\pmod n
+	$$
+	The above equation also implies that $\gcd(x',n)=1$, and thus $x'\in U(n)$ and is an inverse of $a$. Since $(U(n),\cdot)$ satisfies the group axioms, it is indeed a group. Further, since multiplication is commutative modulo $n$, the group is also \textit{Abelian}.
+\end{proof}
+
+
+Now that we have seen sufficient examples of groups, we shall have a look at some general properties of groups.\\
+
+Here onwards, for some binary operation $\circ$, $a\circ b$ shall be represented simply by $ab$.
+
+\begin{proposition}[Uniqueness of Identity]
+	Let $(G,\circ)$ be a group. Then the identity element of the group is unique.
+\end{proposition}
+\begin{proof}
+	Since $(G,\circ)$ is known to be a group, it has atleast one identity. Suppose, there exist two identies $e_1$ and $e_2$. Then, according to the definition of the identity,
+	$$
+	e_1 = e_1e_2 = e_2e_1 = e_2
+	$$
+	This implies that the identity is unique.
+\end{proof}
+\begin{proposition}[Left and Right Cancellation]
+	Let $(G,\circ)$ be a group. Let $a,b,c\in G$.
+	\begin{itemize}
+		\item If $ba=ca$, then $b=c$
+		\item If $ab=ac$, then $b=c$
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Proving one of them is sufficient, since the proof of the other follows similarly. We have 
+	$$
+	ba = ca \Longrightarrow  \underbrace{(ba)a^{-1} =(ca)a^{-1} \Longrightarrow b(aa^{-1})=c(aa^{-1})}_{\text{due to associativity}} \Longrightarrow b=c
+	$$
+\end{proof}
+\begin{proposition}[Uniqueness of Inverse]
+	Let $(G,\circ)$ be a group. For every $a\in G$, there exists a unique inverse $b\in G$ for the aforementioned $a$.
+\end{proposition}
+\begin{proof}
+	Since $G$ is known to be a group, $a$ has atleast one inverse. Suppose there exist two inverses $b$ and $c$ for $a$. Then, 
+	$$
+	b = be = b(ac) = (ba)c = c
+	$$
+	This implies that the inverse of $a$ is unique.
+\end{proof}
+
+\begin{proposition}
+	Let $a,b\in G$. Then $(ab)^{-1}=b^{-1}a^{-1}$
+\end{proposition}
+\begin{proof}
+	Note that 
+	$$
+	e = aa^{-1} = (ae)a = (a(bb^{-1}))a^{-1} = ((ab)b^{-1})a^{-1} = (ab)(b^{-1}a^{-1})
+	$$
+	and due to the uniqueness of the inverse, we have the desired conclusion.
+\end{proof}
+
+
+
+
+
+
+

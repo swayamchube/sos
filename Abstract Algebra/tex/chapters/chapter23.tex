@@ -1,0 +1,97 @@
+We come back to Group Theory in this chapter.
+\begin{definition}[Conjugacy Class]
+	Let $a$ and $b$ be elements of a group $G$. We say that $a$ and $b$ are conjugate in $G$ (and call $b$ a conjugate of $a$) if $xax^{-1}=b$ for some $x\in G$. The \textit{conjugacy} class of $a$ is the set $\cl(a) = \{xax^{-1}\mid x\in G\}$.
+\end{definition}
+
+\begin{lemma}
+	Say $a\sim b$ if $a$ and $b$ are conjugates in $G$. Then $\sim$ is an equivalence relation.
+\end{lemma}
+\begin{proof}
+	\hfill
+	\begin{description}
+		\item[Reflexivity:] $eae^{-1} = a$
+		\item[Symmetry:] $xax^{-1}=b$ $\Longrightarrow$ $x^{-1}bx = a$
+		\item[Transitivity:] $xax^{-1}=b$ and $yby^{-1}=c$ $\Longrightarrow$ $(xy)a(xy)^{-1}=c$
+	\end{description}
+	This completes the proof.
+\end{proof}
+
+Thus, we can divide the group $G$ into equivalence classes.
+
+\begin{proposition}
+	Let $G$ be a group and let $a$ be an element of $G$. Then, 
+	$$|\cl(a)|=|G:C(a)|$$
+\end{proposition}
+\begin{proof}
+	Let $\phi$ be the mapping $xC(a)\mapsto xax^{-1}$. It is easy to verify that $\phi$ is well defined and injective. Thus, we have the desired conclusion.
+\end{proof}
+
+\begin{corollary}
+	In a finite group, $|\cl(a)|$ divides $|G|$.
+\end{corollary}
+\begin{proof}
+	Recall from the chapter \nameref{thm:lagrange}, that the number of cosets of a subgroup divides $|G|$.  
+\end{proof}
+
+\begin{definition}[Class Equation]
+	For any finite group $G$,
+	$$|G| = \sum|G:C(a)|$$
+	where the sum runs over one element $a$ from each conjugacy class of $G$.
+\end{definition}
+
+\begin{proposition}
+	Let $G$ be a non-trivial finite group whose order is a power of a prime $p$. Then $Z(G)$ is non-trivial.
+\end{proposition}
+\begin{proof}
+	If $a\in Z(G)$, then it is obvious that $a\sim a$ only. Thus $\cl(a)=\{a\}$\\
+	Then, we can rewrite the class equation as 
+	$$
+	|G| = |Z(G)| + \sum|G:C(a)|
+	$$
+	where the second sum runs over the conjugacy classes with more than one element. Now, due to Lagrange's Theorem, we know that $|G:C(a)|$ must be a prime power. Now working modulo $p$, we have the desired conclusion that $p\mid Z(G)$.
+\end{proof}
+
+\begin{corollary}
+	If $|G|=p^2$, where $p$ is a prime, then $G$ is Abelian.
+\end{corollary}
+\begin{proof}
+	Combining the previous theorem with Lagrange's theorem, we know that $Z(G)$ must have order $p$ or $p^2$. If $Z(G)$ has order $p^2$, then we are done. If $Z(G)$ has order $p$, then $|G/Z(G)|=p$ and is thus cyclic and finally, we conclude that $G$ is Abelian.
+\end{proof}
+
+\begin{theorem}[Sylow's First Theorem]
+	Let $G$ be a finite group and let $p$ be a prime. If $p^k$ divides $|G|$, then $G$ has at least one subgroup of order $p^k$.
+\end{theorem}
+\begin{proof}
+	We shall induct on $|G|$. The base case with $|G|=1$ is trivial. If $G$ has a proper subgroup $H$ such that $p^k$ divides $|H|$, then according to the inductive hypothesis, we are done. Then, we may assume that $p^k$ does not divide the order of any subgroup of $G$. Finally, consider the class equation for $G$ in the form
+	\begin{equation*}
+		|G| = |Z(G)| + \sum|G:C(a)|
+	\end{equation*}
+	Since $p^k$ divides $|G| = |G:C(a)||C(a)|$ and $p^k$ doesn't divide $|C(a)|$, we know that atleast $p$ must divide $|G:C(a)|$ for all $a\notin Z(G)$. Then, obviously, from the class equation, we have that $p$ must divide $|Z(G)|$. From the funcamental theorem of Finite Abelian Groups, we know that $Z(G)$ contains an element of order $p$. Call this $x$. Now note that $\langle x\rangle $ is a normal subgroup of $G$, since $x$ commutes with all the elements of $G$. Then, we must have that $p^{k-1}$ divides $|G/\langle x\rangle|$. Then, from the induction hypothesis, there must exist a subgroup of order $p^{k-1}$ which will be of the form $H/\langle x\rangle$. But using the fact that $|\langle x\rangle|=p$, we must have that $|H|=p^k$. This contradicts the assumption that there is no subgroup with order divisible by $p^k$ and hence we are done.
+\end{proof}
+
+\begin{definition}[Sylow $p$-Subgroup]
+	Let $G$ be a finite group and let $p$ be a prime. If $v_p(|G|)=k$, then any subgroup of $G$ of order $p^k$ is called a Sylow $p$-subgroup of $G$.
+\end{definition}
+
+\begin{definition}[Conjugate Subgroups]
+	Let $H$ and $K$ be subgroups of a group $G$. We say that $H$ and $K$ are \textit{conjugate} in $G$ if there is an element $g\in G$ such that $H=gKg^{-1}$.
+\end{definition}
+
+\begin{theorem}[Sylow's Second Theorem]
+	If $H$ is a subgroup of a finite group $G$ and $|H|$ is a power of a prime $p$, then $H$ is contained in some Sylow $p$-subgroup of $G$.
+\end{theorem}
+\begin{proof}
+	Let $K$ be a Sylow $p$-subgroup of $G$ and let $C$ be the sets of all conjugates of $K$ in $G$. Ofcourse, since conjugation is an automorphism, each element of $C$ is a Sylow $p$ subgroup of $G$. Now, let $S_C$ denote the permutation group of $C$. Then, we can define the mapping $\phi_g$ which maps $X$ in $C$ to $gXg^{-1}$. Then, consider the mapping $T$ which maps $g$ to $\phi_g$. It is easy to show that $T$ is a homomorphism.\\
+	Now consider the image of $H$ under $T$. Due to the Orbit-Stabilizer Theorem, we must have that $\orb_{T(H)}(K_i)|$ divides $|T(H)|$. and then $|\orb_{T(H)}(K_i)|$ must be a power of $p$. Ofcourse, if the orbit is $1$, then it would mean that $gK_ig^{-1}=K_i$ for all $g\in H$. But that would mean that $H$ is a subgroup of $N(K_i)$ but since all elements in $H$ have prime power, ew also must have $H\le K_i$.\\
+	Finally, all we need to show that there exists $i$ such that the orbit of $K_i$ is $1$. Again, we have that $|C| = |G:N(K)|$. But since $|G:K|$ is not divisible by $p$, neither is $|C|$. Now, since the orbits partition $C$, we must have that $|C|$ is the sum of prime powers of $p$ and if there is no orbit of size $1$, then $p$ would divide $|C|$ which is absurd. This completes the proof.
+\end{proof}
+
+\begin{theorem}[Sylow's Third Theorem]
+	Let $p$ be a prime and let $G$ be a group of order $p^km$ where $p$ doesn't divide $m$. Then, the number $n$ of Sylow $p$ subgroups of $G$ is congruent to $1$ modulo $p$ and divides $m$. Furthermore, any two Sylow $p$-subgroups of $G$ are conjugate.
+\end{theorem}
+\begin{proof}
+	Similar to the previous theorem, we have $S_C$ and $T$. Now, we have that $\orb_{T(K)}(K_i)$ is a power of $p$ and $\orb$ is $1$ if and only if $K\le K_i$. Finally, since the orbits partition $C$, we can conclude that $n\equiv |C|\equiv 1\pmod p$.\\
+	Now, suppose that $H$ is a Sylow $p$ subgroup not in $C$. Consider $T(H)$. Since $|C|$ is the sum of orbits sizes under the action of $T(H)$ and now orbit has size $1$, since $H$ is not in $C$, we must conclude that $p$ divides $C$ which is absurd.\\
+	Finally, $n=|G:N(K)|$ and $n$ is relatively prime to $p$ and hence must divide $m$.
+\end{proof}
+

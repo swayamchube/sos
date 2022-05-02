@@ -1,0 +1,112 @@
+\begin{definition}
+	A \textit{ring homomorphism} $\phi$ from a ring $R$ to a ring $S$ is a mapping from $R$ to $S$ that preserves the two ring operations; that is, for all $a,b\in R$, 
+	$$
+	\phi(a+b) = \phi(a) + \phi(b) \qquad \text{and} \qquad \phi(ab) = \phi(a)\phi(b)
+	$$
+\end{definition}
+
+\begin{definition}[Isomorphism]
+	A ring homomorphism that is both one-to-one and onto is called a ring isomorphism.
+\end{definition}
+
+\begin{proposition}[Properties of Homomorphisms]
+	Let $\phi$ be a ring homomorphism from a ring $R$ to a ring $S$. Let $A$ be a subring of $R$ and let $B$ be an ideal of $S$.
+	\begin{enumerate}
+		\item For any $r\in R$ and any positive integer $n$, $\phi(n\cdot r) = n\cdot\phi(r)$ and $\phi(r^n) = \phi(r)^n$.
+		\item $\phi(A)$ is a subring of $S$.
+		\item If $A$ is an ideal and $\phi$ is onto $S$, then $\phi(A)$ is an ideal.
+		\item $\phi^{-1}(B)$ is an ideal of $R$.
+		\item If $R$ is commutative, then $\phi(r)$ is commutative.
+		\item If $R$ has a unity $1$, $S\ne\{0\}$, and $\phi$ is onto, then $\phi(1)$ is the unity of $S$.
+		\item $\phi$ is an isomorphism if and only if $\phi$ is onto and $\Ker\phi=\{r\in R\mid \phi(r)=0\}=\{0\}$.
+		\item If $\phi$ is an isomorphism from $R$ onto $S$, then $\phi^{-1}$ is an isomorphism from $S$ onto $R$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	I shall not go into much details.
+	\begin{enumerate}
+		\item Trivial
+		\item Trivial
+		\item This follows trivially from the fact that any element in $S$ can be written as $\phi(r)$ for some $r\in R$ and any element in $\phi(A)$ can be written as $\phi(a)$ for some $a\in A$.
+		\item Let $r\in R$. Then, for any $x\in\phi^{-1}(B)$, we know that $\phi(rx) = \phi(r)\phi(x) \in B$ and we have the desired conclusion.
+		\item Trivial
+		\item Since $\phi$ is onto, for any $s\in S$, there exists $r\in R$ such that $\phi(r)=s$. Then, $\phi(1)s = \phi(1r) = \phi(r) = s$.
+		\item If $\phi$ is an isomorphism, it is obvious that $\phi$ is onto and $\Ker\phi=\{0\}$. Suppose now that $\phi$ is onto and $\Ker\phi=\{0\}$. We shall now show that $\phi$ is one-one. Suppose there exist $a,b\in R$ such that $\phi(a)=\phi(b)$. Then, $\phi(a-b)=0$ and the conclusion now follows. Note that we must first prove that $\phi(-a)=-\phi(a)$ but that is easy enough to be omitted.
+		\item Trivial
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+	Let $\phi$ be a ring homomorphism from a ring $R$ to a ring $S$. Then $\Ker\phi$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+	Let $a,b\in\Ker\phi$. Then, $\phi(ab) = \phi(a)\phi(b) = 0$ and thus $ab\in\Ker\phi$. Furthermore, $0=\phi(a)=\phi(b+a-b)=\phi(b)+\phi(a-b)$ and thus, $a-b\in\Ker\phi$. Then, from the Subring Test, we know that $\Ker\phi$ is a subring of $R$. Let $r\in R$, and $a\in\Ker\phi$, then $\phi(rk) = \phi(r)\phi(k) = 0$ and thus $rk\in\Ker\phi$. Hence, we have the desired conclusion.
+\end{proof}
+
+\begin{proposition}
+	Let $\phi$ be a ring homomorphism from $R$ to $S$. Then the mapping from $R/\Ker\phi$ to $\phi(R)$ given by $r+\Ker\phi\mapsto\phi(r)$ is an isomorphism. In symbols, $R/\Ker\phi\cong\phi(R)$
+\end{proposition}
+\begin{proof}
+	We shall first show that the mapping is well defined. Say $r+\Ker\phi=s+\Ker\phi$. Then, there exist $p,q\in\Ker\phi$ such that $r+p=s+q$ and equivalently, 
+	\begin{equation*}
+		\phi(r) = \phi(r)+\phi(p) = \phi(r+p) = \phi(s+q) = \phi(s)+\phi(q) = \phi(s)
+	\end{equation*}
+	We now obviously have that the mapping is surjective. We only need to show that the mapping is injective. For this purpose, suppose $\phi(r) = \phi(s)$. Then, as seen in the proof of the previous theorem, $r-s\in\Ker\phi$ and thus, 
+	\begin{equation*}
+		r+\Ker\phi = s+(r-s)+\Ker\phi = s+\Ker\phi
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+
+\begin{proposition}
+	Every ideal of a ring $R$ is the kernel of a ring homomorphism of $R$. In particular, and ideal $A$ is the kernel of the mapping $r\mapsto r+A$ from $R$ to $R/A$.
+\end{proposition}
+\begin{proof}
+	Trivial
+\end{proof}
+
+\begin{proposition}
+	Let $R$ be a ring with unity $1$. The mapping $\phi:\Z\to R$ given by $n\mapsto n\cdot1$ is a ring homomorphism.
+\end{proposition}
+\begin{proof}
+	Let $m,n\in\Z$. Then $\phi(m+n) = (m+n)\cdot1 = m\cdot1+n\cdot1$. Furthermore, $\phi(mn) = mn\cdot1 = (m\cdot1)(n\cdot1)$.
+\end{proof}
+
+\begin{corollary}
+	If $R$ is a ring with unity and the characteristic of $R$ is $n>0$, then $R$ contains a subring isomorphic to $\Z_n$. If the characteristic of $R$ is zero, then $R$ contains a subring isomorphic to $\Z$.
+\end{corollary}
+\begin{proof}
+	Let $1$ be the unity of $R$ and let $S = \{k\cdot1\mid k\in\Z\}$. Due to the previous result, we know that the mapping $k\mapsto k\cdot1$ is a homomorphism. Then, we can write $\Z/\Ker\phi\cong S$. BUt, clearly $\Ker\phi=\langle n\rangle$, where $n$ is the additive order of $1$ and thus is the characteristic of $R$. So, when $R$ has characteristic $n$, $S\cong\Z/\langle n\rangle\cong\Z_n$. Thus we have the desired conclusion.
+\end{proof}
+
+\begin{theorem}[Steinitz, 1910]
+	If $F$ is a field of characteristic $p$, then $F$ contains a subfield isomorphic to $\Z_p$. If $F$ is a field of characteristic $0$, then $F$ contains a subfield isomorphic to the rational numbers.
+\end{theorem}
+\begin{proof}
+	Due to the above corollary, $R$ contains a subring isomorphic to $\Z_p$ if $F$ has characteristic $p$, whereas $R$ has a subring $S$ isomorphic to $\Z$ if $F$ has characteristic $0$. In the latter case, let 
+	\begin{equation*}
+		T = \{ab^{-1}\mid a,b\in S, b\ne0\}
+	\end{equation*}
+	Then, $T$ is isomorphic to the rationals.
+\end{proof}
+
+\begin{proposition}
+	Let $D$ be an integral domain. Then, there exists a field $F$ (called the field of quotients of $D$) that contains a subring isomorphic to $D$.
+\end{proposition}
+\begin{proof}
+	Let $S=\{(a,b)\mid a,b\in D, b\ne0\}$. We define an equivalence relation on $S$ by $(a,b)\sim(c,d)$ if $ad=bc$. Now, let $F$ be the set of equivalence classes of $S$ under the relation $\sim$ and we represent the equivalence class containing $(x,y)$ by $x/y$. We define addition and multiplication on $F$ by
+	$$
+	a/b+c/d = (ad+bc)/(bd) \qquad \text{and} \qquad a/b\cdot c/d = (ac)/(bd)
+	$$
+	We shall first show that the two operations are well defined. Suppose that $a/b=a'/b'$ and $c/d=c'/d'$. So that $ab'=a'b$ and $cd'=c'd$. It then follows that 
+	\begin{align*}
+		(ad+bc)b'd' &= adb'd' + bcb'd' = (ab')dd' + (cd')bb'\\
+		&=(a'b)dd' + (c'd)bb' = a'd'bd+b'c'bd\\
+		&=(a'd'+b'c')bd
+	\end{align*}
+	As for multiplication, we have
+	\begin{align*}
+		acb'd' = (ab')(cd') = (a'b)(c'd) = a'c'bd
+	\end{align*}
+	It is now easily verified that $F$ is a field. Consider the mapping $\phi$ which takes $x\mapsto x/1$. We note that this mapping is injective. Now, for any equivalence class $a/b$, consider the pair $(ab^{-1},1)$ it is obvious that $ab^{-1}\in D$ and hence the map is surjective and finally, it is an isomorphism.
+\end{proof}

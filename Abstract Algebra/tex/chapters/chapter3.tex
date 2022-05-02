@@ -1,0 +1,106 @@
+We briefly talked about the orders of goups in \textbf{Chapter 1}, putting that formally, we have 
+\begin{definition}[Order of a Group]
+	Let $(G,\circ)$ be a group. If $G$ has a finite number of elements, then we say the order of $G$, denoted by $|G|$ is equal to the number of elements. If $G$ is not finite, then we say that the order of $G$ is infinite.
+\end{definition}
+
+Just as we define the order of a group, we can define the order of an element in a group.
+\begin{definition}[Order of an Element]
+	Let $(G,\circ)$ be a group. Let $g\in G$. The order of $g$ is defined to be the smallest posistive integer satisfying $g^n=e$ where $e$ is the identity element in $G$. If no such $n$ exists, then $g$ is said to have infinite order. The order of $g$ is denoted by $|g|$.
+\end{definition}
+
+\begin{proposition}
+	Let $(G,\circ)$ be a finite group. Then, for every element $g\in G$, $|g|$ is finite.
+\end{proposition}
+\begin{proof}
+	Consider the set 
+	$$
+	\{g,g^2,\cdots,g^{|G|+1}\}
+	$$
+	Since $G$ is closed under $\circ$, the above set must be a subset of $G$ but due to the Pigeon-hole Principle, there must exist two distinct indices $i>j$ such that $g^i=g^j$. This implies that $g^{(i-j)}=e$, implying that the order of $g$ is $i-j\le n$ which is obviously finite.
+\end{proof}
+
+\begin{definition}[Subgroup]
+	Let $(G,\circ)$ be a group. If $H\subseteq G$ and $(H,\circ)$ forms a group, then $H$ is said to be a subgroup of $G$.
+\end{definition}
+
+In what follows, we shall discuss three propositions which are useful for determining whether or not a group is a subgroup of another.
+
+\begin{proposition}
+	Let $G$ be a group and $H$ be a non-empty subset of $G$. If $ab^{-1}\in H$ whenever $a,b\in H$, then $H$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	Since $\circ$ is associative over $G$ and $H\subseteq G$, we can conclude that $\circ$ is associative over $H$. Let $a\in H$, we know this exists since $H$ is given to be non-empty. Then, according to the given hypothesis, $e=aa^{-1}$ also belongs to $H$, where $e$ is the identity element of $G$. Further, since $H\subseteq G$, we know that $ea=a=ae$ for all $a\in H$ since $a\in G$. Now, since $e\in H$, according to the hypothesis, $a^{-1}=ea^{-1}$ must also belong to $H$, for every $a\in H$. Thus, $H$ satisfies all the three group axioms, implying that $H$ is a subgroup of $G$.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be a group and let $H$ be a non-empty subset of $G$. If $ab\in H$ whenever $a,b\in H$ and $a^{-1}\in H$ whenever $a\in H$, then $H$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	Since $\circ$ is associative over $G$ and $H\subseteq G$, we can conclude that $\circ$ is associative over $H$. Let $a\in H$, we know this element exists since $H$ is known to be non-empty. Then, according to the hypothesis, $a^{-1}\in H$ and $aa^{-1}=e\in H$ where $e$ is the identity element of $G$. For any element $a\in H$, note that $ae=a=ea$ since $a\in G$. Also, since the given hypothesis ensures the existance of inverses, we can conclude that $H$ is infact a subgroup of $G$.
+\end{proof}
+
+\begin{proposition}
+	Let $H$ be a non-empty, finite subset of a group $G$. If $H$ is closed under $\circ$, then $H$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	Let $a\in H$, we know this element exists since $H$ is known to be non-empty. Conisder the following set 
+	$$
+	\{a, a^2, \cdots, a^{|H|+1}\}
+	$$
+	Since $H$ is closed under $\circ$ the above set must be a subset of $H$ but due to the Pigeon-hole Principle, there must exist two indices $i>j$ such that $a^i=a^j$. Since $a\in G$, $a^{-1}\in G$, implying that $a^{i-j}=e$. But since $i-j>0$, $a^{i-j}\in H$. Thus, $H$ contains the identity element. It is now trivial that $ae=a=ea$ for all $a\in H$ since $a\in G$. We already had that $a^{i-j}=e$. Then, multiplying $a^{-1}$ on both sides of the equality, we obtain $a^{i-j-1}=a^{-1}$. As long as $a\ne e$, $i-j>1$, implying that $a^{i-j-1}\in H$ and thus for all $a\in H$, $a^{-1}\in H$. Since $H$ satisfies all the group axioms, it is a subgroup of $G$.
+\end{proof}
+
+\begin{definition}
+	Let $G$ be a group. For any element $a\in G$, define 
+	$$
+	\langle a\rangle \stackrel{\text{def}}{=} \{a^n\mid n\in\Z\}
+	$$
+\end{definition}
+\begin{proposition}
+	Let $G$ be a group and $a\in G$. Then $\langle a\rangle$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	For all $m,n\in\Z$, we have $a^m,a^n\in G$ and also $a^{m-n}\in G$. Then, we are done due to \textbf{Proposition 3.11}.
+\end{proof}
+
+\begin{definition}[Center of a Group]
+	Let $G$ be a group. The center of $G$, denoted by $Z(G)$ is the set given by
+	$$
+	Z(G) = \{a\mid a\in G;\quad ax=xa \quad \forall x\in G\}
+	$$
+\end{definition}
+In simpler terms, the Center of a Group is the set of all elements which commute with every element of $G$.
+
+\begin{proposition}
+	The center of a group $G$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	Since $Z(G)\subseteq G$, it suffices to show that $Z(G)$ is a group. Since all the elements of $Z(G)$ are also elements of $G$, $\circ$ must be associative over $Z(G)$. Let $a,b\in Z(G)$ be not necessarily distinct elements. Then, for all $x\in G$, we can write $a = xax^{-1}$ and $b=xbx^{-1}$. Multiplying these two equalities, we obtain $ab=xabx^{-1}$, implying that $(ab)x=x(ab)$. Hence, $Z(G)$ is closed under $\circ$. Now, according to the defninition of the identity (of the group $G$), we know that it commutes with every element of $G$, implying that $e\in Z(G)$. Finally, if $ax=xa$ for all $x\in G$, we can write $xa^{-1}=a^{-1}x$ for all $x\in G$. Thus, $a^{-1}\in G$ whenever $a\in G$. Hence, $Z(G)$ is a group.
+\end{proof}
+
+Similar to the center of a group, we define the centralizer for an element of a group.
+\begin{definition}[Centralizer]
+	Let $G$ be a group. Let $a\in G$, then the centralizer of $a$, denoted by $C(a)$ is the set of all elements in $G$ which commute with $a$. That is,
+	$$
+	C(a) \stackrel{\text{def}}{=}\{x\mid x\in G;\quad ax=xa\}
+	$$
+\end{definition}
+
+\begin{proposition}
+	For each $a\in G$, $C(a)$ is a subgroup of $G$.
+\end{proposition}
+\begin{proof}
+	Since $C(a)\subseteq G$, we know that $\circ$ is associative over $C(A)$. Let $x,y\in C(a)$ which are not necessarily distinct. Then
+	$$
+	a(xy) = (ax)y = (xa)y = x(ay) = x(ya) = (xy)a
+	$$
+	implying that $xy\in a$. That is, $C(a)$ is closed under $\circ$. Finally, note that if $ax=xa$, then simple rearrangement of terms gives us $x^{-1}a = ax^{-1}$, i.e. $x^{-1}\in G$ whenever $x\in G$. Then, due to \textbf{Proposition 3.12}, we can conclude that $C(a)$ is a subgroup of $G$.
+\end{proof}
+
+
+
+
+
+
+
+

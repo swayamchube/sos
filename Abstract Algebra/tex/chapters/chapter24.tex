@@ -1,0 +1,37 @@
+\begin{definition}
+	A group is \textit{simple} if its only normal subgroups are the identity subgroup and the group itself.
+\end{definition}
+
+\begin{proposition}
+	Let $n$ be a positive integer that is not prime, and let $p$ be a prime divisor of $n$. If $1$ is the only divisor of $n$ that is congruent to $1$ modulo $p$, then there doesn't exist a simple group of order $n$.
+\end{proposition}
+\begin{proof}
+	If $n$ is the power of a prime then a group of order $n$ has a non-trivial cdnter and therefore is not simple. If $n$ is not a prime power then every Sylow subgroup is proper and due to Sylow's Third Theorem, the number of Sylow $p$ subgroups of a group of order $n$ is congruent to $1$ modulo $p$ and divides $n$. Since $1$ is the only such number, the Sylow $p$ subgroup is unique and therefore is normal.
+\end{proof}
+
+\begin{proposition}
+	An integerd (greater than 2) which is congruent to $2$ modulo $4$ is not the order of a simple group. 
+\end{proposition}
+\begin{proof}
+	Let $G$ be a group of order $2n$ where $n$ is an odd integer greater than $1$. Define the mapping $T_g$ as $x\mapsto gx$ for $x\in G$. Then, it is easy to show that the mapping $g\mapsto T_g$ is well defined and an isomorphism. Cauchy's Theorem now guarantees the existence of $g\in G$ with order $2$. In this case, $T_g$ must contain only $2$-cycles. Thus, there must be $n$ disjoint $2$ cycles in $T_g$ which would make $T_g$ an odd permutation. This would mean that the set of een permutations in the image of $G$ is a normal subgroup of index $2$. Thus, $G$ is not simple. 
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be a group and let $H$ be a subgroup of $G$. Let $S$ be the group of all permutations of the left cosets of $H$ in $G$. Then there is a homomorphism from $G$ into $S$ whose kernel lies in $H$ and contains every normal subgroup of $G$ that is contained in $H$.
+\end{proposition}
+\begin{proof}
+	We now define $T_g$ as a permutation of the left coset of $H$ by mapping $xH$ to $gxH$. Verify now that the mapping $\alpha: g\mapsto T_g$ is a homomrophism.\\
+	Ofocurse, if $g\in\Ker\alpha$, then $T_g$ Is the identity map and hence $H = gH$, and thus $g\in H$, which woudl imply $\Ker\alpha\subseteq H$. \\
+	Now let $K$ be some normal subgroup contained in $H$. Then for some $k\in K$, and any $x\in G$, there must exist $k'\in K$ such that $kx = xk'$ or equivalently, one can conclude that $T_k$ would be the identity permutation. Thus, $k\in\Ker\alpha$. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+	If $G$ is a finite group and $H$ is a proper subgroup of $G$ such that $|G|$ does not divide $|G:H|!$, then $H$ contains a non-trivial normal subgroup of $G$. In particular, $G$ is not simple.
+\end{corollary}
+\begin{proof}
+	Follows from the previous proof. Basically, argue that $G/\Ker\alpha$ is isomorphic to some set of order $|G:H|!$ which would mean that $\Ker\alpha$ must be greater than $1$.
+\end{proof}
+
+\begin{corollary}
+	If a finite non-abelian, simple group $G$ has a subgroup of index $n$, then $G$ is isomorphic to a subgroup of $A_n$.
+\end{corollary}

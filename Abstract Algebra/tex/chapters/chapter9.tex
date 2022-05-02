@@ -1,0 +1,120 @@
+\begin{definition}[Normal Subgroups]
+	A subgroup $H$ of a group $G$ is called a \textit{normal subgroup} of $G$ if $aH=Ha$ for all $a\in G$. We denote this by $H\vtri G$.
+\end{definition}
+
+As an example, note trivially that every subgroup of an Abelian Group is normal.\\
+The center of a group $G$, denoted by $Z(G)$ forms a normal subgroup of $G$. (Recall that we showed that $Z(G)$ is a subgroup in one of the previous chapters.)
+
+\begin{proposition}
+	A subgroup $H$ of $G$ is normal in $G$ if and only if $xHx^{-1}\subseteq H$ for all $x\in G$.
+\end{proposition}
+\begin{proof}
+	Suppose $H$ is normal. Then, for all $x\in G$, and $h\in H$, there exists $h'\in H$ such that $xh=h'x$, or equivalently, $xhx^{-1}=h'$. Note that the map is injective and hence $xHx^{-1}\subseteq H$ for all $x\in G$.\\
+	Suppose now that $xHx^{-1}\subseteq H$ for all $x\in G$. Let $x=a$ for some $a\in G$, then $aHa^{-1}\subseteq H$, that is, $aH\subseteq Ha$. Taking now $x=a^{-1}$, we note that $a^{-1}Ha\subseteq H$, that is, $Ha\subseteq aH$. Thus, $aH=Ha$ for all $a\in G$
+\end{proof}
+
+Following here, we look at what are known as \textit{Quotient Groups} or sometimes as \textit{Factor Groups}\footnote{Gallian likes to call them this for some reason.}
+
+\begin{theorem}[Holder, 1889]
+	Let $G$ be a group and let $H$ be a normal subgroup of $G$. The set $G/H=\{aH\mid a\in G\}$ is a group under the operation $(aH)(bH)=(ab)H$.
+\end{theorem}
+\begin{proof}
+	First, we must show that the operation is well defined, that is, it is a valid function from $G/H\times G/H\to G/H$. Suppose that we have $a,a',b,b'\in G$ such that $aH=a'H$ and $bH=b'H$. We shall show that $(ab)H=(a'b')H$. According to the assumption, there exist $h_1,h_2\in H$ such that $a'=ah_1$ and $b'=bh_2$. Then,
+	$$
+	a'b'H = ah_1bh_2H = ah_1bH = ah_1Hb = aHb = abH
+	$$
+	Obviously, the identity element in $G/H$ is $eH=H$. The inverse of an element $aH$ is given obviously by $a^{-1}H$. Finally, we need to show associativity.
+	$$
+	aH(bHcH) = aH((bc)H) = a(bc)H = (ab)cH = (ab)HcH = (aHbH)cH
+	$$
+	This completes the proof that $G/H$ is a group.
+\end{proof}
+
+\begin{theorem}[$G/Z$ Theorem]
+	Let $G$ be a group and $Z(G)$ be its center. If the Quotient group $G/Z(G)$ is cyclic, then $G$ is Abelian.
+\end{theorem}
+\begin{proof}
+	Let the generator for the Quotient group be $aZ(G)$ for some $a\in G$. Then, for all $g\in G$, there exists an index $i$ such that $gZ(G) = a^iZ(G)$ and thus, there exists $z\in Z(G)$ such that $g=a^iz$. Then, for $g'\in G$, there exists $z'\in Z(G)$ such that $g'=a^jz'$ for some index $j$. Then,
+	$$
+	gg' = a^iza^jz' = a^ia^jzz' = a^ja^iz'z = a^jz'a^iz = g'g
+	$$
+	This completes the proof.
+\end{proof}
+
+\begin{proposition}
+	Let $G$ be a group. Then $G/Z(G)\cong\inn(G)$.
+\end{proposition}
+\begin{proof}
+	For each $g\in G$, let $\phi_g$ denote the innermorphism induced by $g$. We shall show that the mapping $T: G/Z(G)\to\inn(G)$ given by $gZ(G)\mapsto\phi_g$ is an isomorphism. First, we shall show that $T$ is a well defined function. Asusme that $T(gZ(G)) = T(hZ(G))$. Then, there exists $z\in Z(G)$ such that $h = gz = zg$. Then the mapping 
+	$$
+	\phi_{h}(x) = (gz)x(z^{-1}g^{-1}) = gzz^{-1}xg^{-1} = \phi_{g}(x)
+	$$
+	This shows that $\phi_g=\phi_h$.\\
+	It is clear that $T$ is an onto function. We shall now show injectivity. Suppose $\phi_g=\phi_h$, then, for all $x\in G$, we have $gxg^{-1} = hxh^{-1}$. Equivalently, $(h^{-1}g)x = x(h^{-1}g)$, that means, $h^{-1}g=z$ for some $z\in G$, or $g = hz$. Now it is trivial to see that $gZ(G)=hZ(G)$. This completes the proof of injectivity. Note now that $T(ghZ(G)) = \phi_{gh} = \phi_{g}\phi_{h} = T(gZ(G))T(h(Z(G)))$. Now, we finally have that $T$ is an isomorphism.
+\end{proof}
+
+\begin{theorem}[Cauchy's Theorem for Abelian Groups]
+	Let $G$ be a finite Abelian group. Let $p$ be a prime dividing the order of $G$. Then, $G$ has an element of order $p$.
+\end{theorem}
+\begin{proof}
+	We shall prove the statement by induction on $|G|$. The base case $|G|=2$ is trivial, due to Lagrange's Theorem. Now note that there must exist an element in $G$ with prime order. Since, there must exist an element $x\in G$ with order $m$ which is divisible by some prime $q$, then the element $z=x^{m/q}\in G$ must have order $q$.\\
+	If $q=p$, then we are done. If not, consider now the Quotient group $\overline{G} = G/\langle z\rangle$. Due to Lagrange's Theorem, $|\overline{G}|=|G|/q$. Note that $\overline{G}$ must be Abelian and by induction, there must exist an element $y\langle z\rangle$ having order $p$. Thus, $y^p\langle z\rangle = \langle z\rangle$. Hence, $y^p\in\langle z\rangle$. If $y^p=e$, we are done. Else, $y^p$ has order $q$ and thus $y^q$ has order $p$ and this completes the proof.
+\end{proof}
+
+\begin{definition}[Internal Direct Product]
+	We say that $G$ is the \textit{internal direct product} of $H$ and $K$ and write $G=H\times K$ if $H$ and $K$ are normal subgroups of $G$ and 
+	$$
+	G = HK \qquad \text{and} \qquad H\cap K=\{e\}
+	$$
+\end{definition}
+Recall the definition that 
+$$
+HK = \{hk\mid h\in H, k\in K\}
+$$
+We can extend the above definition further, as follows
+\begin{definition}[Extended Internal Direct Product]
+	Let $H_1,H_2,\cdots,H_n$ be a finite collection of normal subgroups of $G$. We say that $G$ is \textit{internal direct product} of $H_1,H_2,\cdots,H_n$ and write $G=H_1\times H_2\times\cdots\times H_n$ if 
+	\begin{itemize}
+		\item $G = H_1H_2\cdots H_n = \{h_1h_2\cdots h_n\mid h_i\in H_i\}$
+		\item $H_1H_2\cdots H_i\cap H_{i+1} = \{e\}$ for $i=1,2,\cdots,n-1$.
+	\end{itemize}
+\end{definition}
+
+\begin{proposition}
+	If $G$ is the internal direct product of a finite number of subgroups $H_1,H_2,\cdots,H_n$, then $G$ is isomorphic to the external direct product of $H_1,H_2,\cdots,H_n$. That is 
+	$$
+	H_1\times H_2\times\cdots\times H_n \cong H_1\oplus H_2\oplus\cdots\oplus H_n
+	$$
+\end{proposition}
+Before we prove the above, we shall prove the following lemma:
+\begin{lemma}
+	Let $G$ be a group which is the internal direct product of $H_1\times H_2\times\cdots\times H_n$. Then, for every element $g\in G$, there exist unique $h_i\in H_i$ for each permissible $i$ such that $g = \prod_{i=1}^{n}h_{i}$. Further, the elements from different $H_i$'s commute with one another.
+\end{lemma}
+\begin{proof}
+	Assume FTSOC, there exist two sets $h_i$ and $h'_i$ satisfying the requirements. Then,
+	$$
+	h_1h_2\cdots h_{n-1}h_n = h'_1h'_2\cdots h'_{n-1}h'_n
+	$$
+	Let us now denote $h_1h_2\cdots h_{n-1}$ as $x\in H_1\times H_2\times\cdots\times H_{n-1}$ and its counterpart by $x'$. Then, we have that $xh_n=x'h'_n$, and thus, $xx'^{-1}=h'_{n}h_{n}^{-1}$ but this means that $h_{n}=h'_{n}$. Now, working downwards from here, we have the desired conclusion.\\
+	First, we note that any pair of distinct $H_i$'s only intersect at $e$. Let us now take $h_1$ and $h_2$ from $H_1$ and $H_2$ respectively. We shall show that they commute. (Note that we can do this without loss of generality since we showed that each of the $H_i$'s mutually intersect only at $e$). We know, since $H_1$ and $H_2$ are normal that $h_1H_2=H_2h_1$ and thus, there exists $y\in H_2$ such that $h_1h_2=yh_2$. Similarly, we know that $H_1h_2=h_2H_1$ and thus, there exists $x\in H_1$ such that $h_1h_2=h_2x$. This implies that $h_2x=yh_1$, or $y^{-1}h_2=h_1x^{-1}$. But due to the condition on the $H_i$'s they can intersect only at $e$ and thus $x=h_1$ and $y=h_2$. 
+\end{proof}
+\begin{proof}[\bfseries Proof of the Proposition]
+	This now follows immediately from the above lemma that every element in $G$ has a unique representation as a product of $h_i$'s from each $H_i$. Then, we simply use the isomorphism
+	$$
+	\phi(h_1h_2\cdots h_n) = \left(h_1,h_2,\cdots,h_n\right)
+	$$
+	Note that due to the commutativity of the $h_i$'s, this is actually an isomorphism.
+	This completes the proof.
+\end{proof}
+
+\begin{proposition}
+	Every group $G$ of order $p^2$, where $p$ is a prime, is isomorphic to $Z_{p^2}$ or $Z_p\oplus Z_p$. 
+\end{proposition}
+\begin{proof}
+	% Add Proof Later
+\end{proof}
+
+We then instantly have the following corollary
+\begin{corollary}
+	Every group of order $p^2$ is Abelian.
+\end{corollary}

@@ -1,0 +1,78 @@
+\begin{definition}[Types of Extensions]
+	Let $E$ be an extension field of a field $F$ and let $a\in E$. We call $a$ \textit{algebraic} over $F$, if $a$ is the zero of some non-zero polynomial in $F[x]$. If $a$ is not algebraic over $F$, it is called \textit{transcendental} over $F$. An extension $E$ of $F$ is called an algebraic extension of $F$ if every element of $E$ is algebraic over $F$. If $E$ is not an algebraic extension, it is called a \textit{transcendental} extension of $F$. An extension of $F$ of the form $F(a)$ is called a \textit{simple} extension of $F$.
+\end{definition}
+
+\begin{proposition}
+	Let $E$ be an extension field of the field $F$ and let $a\in E$. If $a$ is transcendental over $F$, then $F(a)\cong F(x)$. If $a$ is algebraic over $F$, then $F(a)\cong F[x]/\langle p(x)\rangle$, where $p(x)$ is a polynomial in $F[x]$ of minimum degree such that $p(a)=0$ moreover $p(x)$ is irreducible over $F$.
+\end{proposition}
+\begin{proof}
+	Consider the homomorphism $\phi:F[x]\to F(a)$ given by $f(x)\mapsto f(a)$. If $a$ is transcendental over $F$, then $\Ker\phi=\{0\}$. Thus, we may extend $\phi$ to an isomorphism $\Phi:F(x)\to F(a)$ by defining $\Phi(f(x)/g(x)) = f(a)/g(a)$.\\
+	There is a problem when $a$ is algebraic, namely, $\Ker\phi = \langle p(x)\rangle$ where $p(x)$ has minimum degree among all elements of $\langle p(x)\rangle$. Thus, $p(a)=0$ and it is hence irreducible over $F$. Now we are done by \textbf{Proposition 20.154}.
+\end{proof}
+
+\begin{proposition}
+	If $a$ is algebraic over a field $F$, then there is a unique monic irreducible polynomial $p(x)$ in $F[x]$ such that $p(a)=0$.
+\end{proposition}
+\begin{proof}
+	Follows from the previous proof.
+\end{proof}
+The next one follows too
+\begin{proposition}
+	Let $a$ be algebraic over $F$, and let $p(x)$ be the minimal polynomial for $a$ over $F$. If $f(x)\in F[x]$ and $f(a)=0$, then $p(x)$ divides $f(x)$ in $F[x]$.
+\end{proposition}
+
+\begin{definition}
+	Let $E$ be the extension firld of a field $F$. We say that $E$ has degree $n$ over $F$ and write $[E:F]=n$ if $E$ has dimension $n$ as a vector space over $F$. If $[E:F]$ is finite, $E$ is called a \textit{finite extension} of $F$; otherwise, we say that $E$ is an \textit{infinite extension} of $F$.
+\end{definition}
+
+\begin{proposition}
+	If $E$ is a finite extension of $F$, then $E$ is an algebraic extension of $F$.
+\end{proposition}
+\begin{proof}
+	Trivial enough. Consider any element $a\in E$, then the set $\{1,a,\cdots,a^n\}$ is linearly dependant and we have ourselves a polynomial of degree $n$ which nullifies $a$ and hence, we are done.
+\end{proof}
+
+\begin{proposition}
+	Let $K$ be a finite extension field of the field $E$ and let $E$ be a finite extensio nfield of the field $F$. Then $K$ is a finite extension field of $F$ and $[K:F]=[K:E][E:F]$.
+\end{proposition}
+\begin{proof}
+	Let $X=\{x_1,x_2,\cdots,x_n\}$ be a basis for $K$ over $E$ and let $Y=\{y_1,y_2,\cdots,y_m\}$ be a basis for $E$ over $F$, We shall show that 
+	\begin{equation*}
+		YX = \{y_jx_i\mid 1\le j\le m, ~1\le i\le n\}
+	\end{equation*}
+	For any $a\in K$, it is not hard to see that $a$ can be written as a linear combination of the elements in $YX$. Now, suppose that there exists a linear combination of $YX$ which results in the zero element. Then
+	\begin{align*}
+		0 &= \sum_{i,j}y_jx_i = \sum_i\left(\sum_jc_{ij}y_j\right)x_i
+	\end{align*}
+	But, using the linear independance of $x_i$, we conclude that 
+	\begin{equation*}
+		0 = \sum_j c_{ij}y_j \Longrightarrow c_ij = 0
+	\end{equation*}
+	This completes the proof.
+\end{proof}
+
+\begin{theorem}[Steinitz, 1910]
+	If $F$ is a field of characteristic $0$, and $a$ and $b$ are algebraic over $F$, then there is an element $c$ in $F(a,b)$ such that $F(a,b)=F(c)$.
+\end{theorem}
+
+\begin{proposition}
+	If $K$ is an algebraic extension of $E$ and $E$ is an algebraic extension of $F$, then $K$ is an algebraic extension of $F$.
+\end{proposition}
+\begin{proof}
+	Let $a\in K$. It suffices to show that $a$ is in some finite extension of $F$. Since $a$ is algebraic over $E$, there is an irreducible polynomial $p(x) = b_nx^n+b_{n-1}x^{n-1}+\cdots+b_0$. Consider the following
+	\begin{align*}
+		F_0 &= F(b_0)\\
+		F_1 &= F_0(b_1)\\
+		\vdots\\
+		F_n &= F_{n-1}(b_n)
+	\end{align*}
+	Now, $[F_n(a):F_n]=n$ and hence:
+	\begin{equation*}
+		[F_n(a):F] = [F_n(a):F_n][F_n:F_{n-1}]\cdots[F_0:F]
+	\end{equation*}
+	which is obviously finite.
+\end{proof}
+
+\begin{corollary}
+	Let $E$ be an extension field of the field $F$. Then, the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
+\end{corollary}

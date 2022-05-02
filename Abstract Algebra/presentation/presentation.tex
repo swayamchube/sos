@@ -1,0 +1,244 @@
+\documentclass{beamer}
+\usetheme{frankfurt}
+\usepackage{amsthm}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\stab}{\operatorname{stab}}
+\newcommand{\orb}{\operatorname{orb}}
+\newcommand{\cl}{\operatorname{cl}}
+
+
+\title{Abstract Algebra\\ Summer of Science}
+\author{Swayam Chube \\ \textbf{Mentor: }Shourya Pandey}
+\date{\today}
+
+\begin{document}
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Introduction}
+		In this brief presentation I shall focus mainly on \textbf{Group Theory} and some powerful results related to it.\\
+		Topics which I hope to cover are:
+		\begin{itemize}
+			\item Cosets and Lagrange's Theorem
+			\item Orbit-Stabilizer Theorem
+			\item Cauchy's Theorem
+			\item Fundamental Theorem of Finite Abelian Groups
+		\end{itemize}
+		I would have liked to include the three Sylow Theorems but that would inflate the running time of the presentation to more than 15 minutes.
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Definition of a Group}
+		\begin{definition}[Binary Operation]
+			Let $G$ be a set. A binary operation on $G$ is simply a function $\star\colon G\times G\to G$.
+		\end{definition}
+		
+		\begin{definition}[Group]
+			Let $G$ be a set and $\star$ be a binary operation defined on $G$. Then the ordered pair $(G,\star)$ is said to be a \textit{group} if 
+			\begin{enumerate}
+				\item $\forall$ $a,b,c\in G$, $a\star(b\star c) = (a\star b)\star c$. Associativity.
+				\item $\exists$ $e\in G$ such that $\forall$ $a\in G$, $a\star e = a = e\star a$. Existence of the Identity.
+				\item $\forall$ $a\in G$, $\exists$ $b\in G$ such that $a\star b = e = b\star a$. Existence of Inverses.
+			\end{enumerate}
+		\end{definition}
+		
+		Henceforth, I shall abuse notation and use the phrase ``$G$ is a group" to refer to ``$(G,\star)$ is a group" and $ab$ to refer to $a\star b$.
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Properties of Groups}
+		\begin{theorem}
+			Let $G$ be a group. Then,
+			\begin{itemize}
+				\item The identity element is unique.
+				\item Left and Right cancallation laws hold true. That is, $ab = ac \Longrightarrow b = c$ and $ba = ca \Longrightarrow b = c$.
+				\item $\forall$ $a\in G$, the inverse $a^{-1}$ is unique.
+				\item $\forall a,b\in G$, $(ab)^{-1} = b^{-1}a^{-1}$
+			\end{itemize}
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Orders and Subgroups}
+		\begin{definition}[Order of a Group]
+			The \textit{order} of a group is equal to the number of elements in it. We use $|G|$ to denote the order of a group $G$.
+		\end{definition}
+		\begin{definition}[Order of an Element]
+			The order of an element $g$ in a group $G$ is equal to the smallest positive integer $n$ (if it exists) such that $g^n = e$. If no such $n$ exists, $g$ is said to have infinite order. The order of an element $g$ is denoted by $|g|$.
+		\end{definition}
+		\begin{definition}[Subgroup]
+			$H\subseteq G$ is said to be a subgroup of $G$ if $(H,\star)$ is a group.
+		\end{definition}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{More Definitions and a Theorem}
+		\begin{definition}[Center of the Group]
+			Let $G$ be a group. The \textit{center} $Z(G)$ is defined as follows
+			\begin{equation*}
+				Z(G) = \{a\in G\mid ax = xa \quad \forall x\in G\}
+			\end{equation*}
+			Further, $Z(G)$ is a subgroup of $G$.
+		\end{definition}
+		\begin{definition}
+			Let $G$ be a group and $a\in G$. The \textit{centralizer} of $a$ in $G$, $C(a)$ is defined to be the set of all elements in $G$ that commute with $a$.\\
+			For all $a\in G$, $C(a)$ is a subgroup of $G$.
+		\end{definition}
+		\begin{theorem}
+			The order of each element in a finite group is finite.
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Cyclic Groups}
+		\begin{definition}
+			Let $G$ be a group. $G$ is said to be cyclic if there exists $a\in G$ such that 
+			\begin{equation*}
+				G = \langle a\rangle = \{a^n\mid n\in\Z\}
+			\end{equation*}
+		\end{definition}
+		\begin{theorem}[Fundamental Theorem of Cyclic Groups]
+			Every subgroup of a cyclic group is cyclic. Moreover, if $|\langle a\rangle| = n$, then the order of any subgroup of $\langle a\rangle$ is a divisor of $n$; and, for each positive divisor $k$ of $n$, the group $\langle a\rangle$ has exactly one subgroup of order $k$, namely $\langle a^{n/k}\rangle$
+		\end{theorem}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Cosets}
+		\begin{definition}
+			Let $G$ be a group and let $H$ be a non-empty subset of $G$. For any $a\in G$, denote the set $\{ah\mid h\in H\}$ by $aH$ and similarly denote the set $\{ha\mid h\in H\}$ by $Ha$ and the set $\{aha^{-1}\mid h\in H\}$ by $aha^{-1}$. When $H$ is a subgroup of $G$, the set $aH$ is called the left coset of $H$ in $G$ containing $a$ and $Ha$ is called the right coset of $H$ in $G$ containing $a$. $a$ is then called the coset representative of $aH$ or $Ha$. We use $|aH|$ or $|Ha|$ to denote the number of elements in $aH$ or $Ha$ respectively.
+		\end{definition}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Properties of Cosets}
+		\begin{theorem}
+			Let $H$ be a subgroup of $G$ and let $a,b\in G$. Then,
+			\begin{itemize}
+				\item $aH = H$ if and only if $a\in H$
+				\item $aH = bH$ if and only if $a\in bH$
+				\item Either $aH = bH$ or $aH\cap bH = \emptyset$
+				\item $|aH| = |bH|$
+			\end{itemize}
+		\end{theorem}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Lagrange's Theorem}
+		\begin{theorem}[Lagrange, 1770]
+			If $G$ is a finite group and $H$ is a subgroup of $G$, then $|H|$ divides $|G|$. Furthermore, the number of distinct cosets(left or right) of $H$ in $G$ is $|G|/|H|$.
+		\end{theorem}
+		\begin{proof}
+			Let $a_1H,a_2H,\cdots,a_nH$ denote the distinct left cosets of $H$ in $G$. Due to the previous theorem, we know that all the above cosets must be disjoint and must have equal number of elements. Furthermore, every element must be a member of exactly one left coset. 
+			\begin{equation*}
+				n|H| = \sum_{i=1}^n|a_iH| = |G|
+			\end{equation*}
+		\end{proof}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Permutation Groups}
+		\begin{definition}[Permutation Group]
+			A permutation of a set $A$ is a bijective function $\sigma:A\to A$. A \textit{permutation group} of a set $A$ is a set of all permutations of $A$, which form a group under the binary operation of composition.
+		\end{definition}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Orbits and Stabilizers}
+		\begin{definition}[Stabilizer of an element]
+			Let $G$ be a group of permutations of a set $S$. For each $i\in S$, let 
+			\begin{equation*}
+				\stab_G(i) = \{\phi\in G\mid \phi(i) = i\}
+			\end{equation*}
+			be the \textit{stabilizer} of $i$ in $G$.
+		\end{definition}
+		\begin{definition}
+			Let $G$ be a group of permutations of a set $S$. For each $i\in S$, let
+			\begin{equation*}
+				\orb_G(i) = \{\phi(i)\mid \phi\in G\}
+			\end{equation*}
+			be the orbit of $i$ under $G$. We use $|\orb_G(i)|$ to denote the number of elements in $\orb_G(i)$.
+		\end{definition}
+		Guess what comes next...
+	\end{frame}
+	\begin{frame}
+		\frametitle{Orbit-Stabilizer Theorem}
+		\begin{theorem}
+			Let $G$ be a finite group of permuattions of a set $S$. Then, for any $i\in S$, 
+			\begin{equation*}
+				|G| = |\orb_G(i)||\stab_G(i)|
+			\end{equation*}
+		\end{theorem}
+		\begin{proof}
+			Consider the mapping $\Phi:G\to S$ which maps $\phi\stab_G(i)\mapsto\phi(i)$. Show now that $\Phi$ is a well defined bijection. This would then imply that the number of distinct left cosets of $\stab_G(i)$ in $G$ is equal to $|\Phi(G)|$ which is nothing but $|\orb_G(i)|$.
+		\end{proof}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Normal Subgroup and Factor Group}
+		\begin{definition}[Normal Subgroup]
+			A subgroup $H$ of a group $G$ is said to be \textit{normal} if $aH = Ha$ for all $a\in G$. We denote this by $H\vartriangleleft G$.
+		\end{definition}
+		\begin{theorem}
+			Let $G$ be a group and let $H$ be a normal subgroup of $G$. The set 
+			\begin{equation*}
+				G/H = \{aH\mid a\in G\}
+			\end{equation*}
+			is a group under the operation $(aH)(bH) = (ab)H$. This group is called a Factor Group or Quotient Group.
+		\end{theorem}
+	\end{frame}
+	\begin{frame}
+		\frametitle{Cauchy's Theorem}
+		\begin{theorem}
+			Let $G$ be a finite Abelian group and let $p$ be a prime that divides the order of $G$. Then $G$ has an element of order $p$.
+		\end{theorem}
+		\begin{proof}
+			The proof is by induction on $|G|$. If the order of an element $x$ is equal to $n$ which is not prime, then simply take $x^{n/p_i}$ where $p_i$ is a prime dividing $n$ and that would have prime order. Now let $g\in G$ have prime order $q$. If $q\ne p$, take the group $\overline{G} = G/\langle g\rangle$. Now since $p$ divides $|\overline{G}|$, show that there exists $h\langle g\rangle$ of order $p$. Then, we would have $h^p\langle g\rangle = \langle x\rangle$ or $h^p\in\langle g\rangle$. If $h^p\ne e$, then $y^p$ has order $r$ and $h^r$ has order $p$.
+		\end{proof}
+	\end{frame}
+
+	\begin{frame}
+		\frametitle{Direct Products}
+		\begin{definition}[External Direct Product]
+			Let $G_1,G_2,\cdots,G_n$ be a finite collection of groups. The \textit{external direct product} of $G_1,G_2,\cdots,G_n$, written as $G_1\oplus G_2\oplus\cdots\oplus G_n$ is the set of all $n$-tuples for which the $i$-th component is an element of $G_i$ and the operation is componentwise.
+		\end{definition}
+		\begin{definition}[Internal Direct Product]
+			We say that $G$ is the \textit{internal direct product} of $H$ and $K$ and write $G = H\times K$ if $H$ and $K$ are normal subgroups of $G$ and 
+			\begin{equation*}
+				G = HK = \{hk\mid h\in H,~k\in K\} \qquad\text{and}\qquad H\cap K = \{e\}
+			\end{equation*} 
+		\end{definition}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Fundamental Theorem of Finite Abelian Groups}
+		\begin{theorem}[Fundamental Theorem of Finite Abelian Groups]
+			Every finite Abelian group is a direct product of cyclic groups of prime-power order. Moreover, the number of terms in the product and the orders of the cyclic groups are uniquely determined by the group.
+		\end{theorem}
+		The proof of the above theorem requires four lemmas. I shall not go over their proofs but I will show how they come together to prove the Fundamental Theorem of Finite Abelian Groups.
+	\end{frame}
+	\begin{frame}
+		\frametitle{The First Two}
+		\begin{lemma}
+			Let $G$ be a finite Abelian group of order $p^nm$ where $p$ is a prime that doesn't divide $m$. Then $G = H\times K$ where $H = \{x\in G\mid x^{p^n} = e\}$ and $K=\{x\in G\mid x^m = e\}$.
+		\end{lemma}
+		\begin{lemma}
+			Let $G$ be an Abelian group of prime power order and let $a$ be an element of maximum order in $G$. Then $G$ can be written int the form $\langle a\rangle\times K$.
+		\end{lemma}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{The Last Two}
+		\begin{lemma}
+			A finite Abelian gorup of prime power order is an internal direct product of cyclic groups.
+		\end{lemma}
+		
+		\begin{lemma}
+			Suppose that $G$ is a finite Abelian group of prime power order. If $G=H_1\times H_2\times\cdots\times H_m$ and $G=K_1\times K_2\times\cdots\times K_n$, where the $H$ and $K$ are nontrivial cyclic subgroups with monotonically decreasing orders, then $m = n$ and $|H_i| = |K_i|$ for all $i$.
+		\end{lemma}
+	\end{frame}
+	
+	\begin{frame}
+		\frametitle{Putting It All Together}
+		Let $G$ be a finite Abelian group of order $p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$. Then, from Lemma 1, we can write $G$ as an internal product of $G(p_1)\times G(p_2)\times\cdots\times G(p_k)$. Where $G(p_i) = \{x\in G\mid x^{p_i^{n_i}} = e\}$. But, from Lemma 3, we have that each of these $G(p_i)$ is an internal direct product of cyclic groups.~ And uniqueness is now guaranteed by Lemma 4. This completes the proof. $\blacksquare$\\
+		
+		\textcolor{red}{Lemma 2 is used in the proof of Lemma 3.}
+	\end{frame}
+\end{document}

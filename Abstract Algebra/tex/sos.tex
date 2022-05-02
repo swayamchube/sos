@@ -1,0 +1,229 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage{
+	amsmath,
+	amsthm,
+	amssymb,
+	xcolor,
+	soul, 
+	cancel, 
+	fancyhdr,
+	graphicx,
+}
+\pagestyle{fancy}
+\fancyhead[L]{Abstract Algebra}
+\fancyhead[R]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+}
+\usepackage{geometry}
+\geometry{
+	left = 1in,
+	right = 1in,
+	top = 1in,
+	bottom = 1in,
+}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+
+\newcounter{theorem}
+\newenvironment{theorem}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt,linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Theorem~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt,linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Theorem~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+\newenvironment{definition}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=gray!15, backgroundcolor=gray!15,]
+		\bfseries Definition~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=gray!15, backgroundcolor=gray!15,]
+		\bfseries Definition~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{proposition}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Proposition~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Proposition~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newcounter{corollary}
+\newenvironment{corollary}{
+	\stepcounter{corollary}
+	\begin{mdframed}[linecolor=blue!10, backgroundcolor=blue!10, linewidth=1pt,]
+	\bfseries Corollary~\thechapter.\thecorollary.\normalfont
+}{\end{mdframed}}
+
+\newenvironment{lemma}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=yellow!30, backgroundcolor=yellow!30,]
+		\bfseries Lemma~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=yellow!30, backgroundcolor=yellow!30,]
+		\bfseries Lemma~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{example}[1][]{
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=red!10, backgroundcolor=red!20,]
+		\bfseries Example.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=red!10, backgroundcolor=red!20,]
+		\bfseries Example~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{exercise}{
+	\begin{mdframed}[linewidth=1pt, linecolor=green!10, backgroundcolor=green!10,]
+	\bfseries Exercise.\normalfont
+}{\end{mdframed}}
+
+\title{
+	{Abstract Algebra}\\
+	\small Reading Project: Summer of Science\\
+	Indian Institute of Technology Bombay\\
+	\includegraphics[width=0.5\textwidth]{../images/grouptheory.png}
+}
+\author{Swayam Chube\\\textbf{Mentor:} Shourya Pandey}
+\date{Date of Submission : \today}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Pb}{\mathbb{P}}
+\newcommand{\vphi}{\varphi}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\inn}{\operatorname{Inn}}
+\newcommand{\stab}{\operatorname{stab}}
+\newcommand{\orb}{\operatorname{orb}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\vtri}{\vartriangleleft}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\chr}{\operatorname{char}}
+\newcommand{\cl}{\operatorname{cl}}
+\newcommand{\Cay}{\operatorname{Cay}}
+\newcommand{\wt}{\operatorname{wt}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\setcounter{chapter}{0}
+\setlength{\parindent}{0pt}
+\begin{document}
+	\maketitle
+	\tableofcontents
+
+\chapter*{Introduction}
+	This is the report for the Summer of Science Reading Project for Abstract Algebra under the mentorship of Shourya Pandey. The reference text used for preparing the same was \textbf{Contemporary Abstract Algebra by Joseph A. Gallian}. \\
+	
+	It is known to me that this report is notably long which is partly due to me getting carried away with the details of proofs during the first half of the project. In order to keep the reader engaged in the text, I have decided to omit long and routine proofs in the latter half of the report, but the theorems have still been cited in full detail. \\
+	
+	The most important parts are Parts I, II and III which deal with Groups, Rings and Fields respectively. Part IV which deals with special topics has not been talked about in exceeding detail in order to refrain from making this report too technical and lackluster.
+
+\part{Groups}
+	\chapter{An Introduction To Groups}
+	\input{chapters/chapter1}
+	
+	\chapter{Formalizing Groups}
+	\input{chapters/chapter2}
+	
+	\chapter{Finite Groups and Subgroups}
+	\input{chapters/chapter3}
+	
+	\chapter{Cyclic Groups}
+	\input{chapters/chapter4}
+	
+	\chapter{Permutation Groups}
+	\input{chapters/chapter5}
+	
+	\chapter{Isomorphisms}
+	\input{chapters/chapter6}
+	
+	\chapter{Cosets and Lagrange's Theorem}
+	\input{chapters/chapter7}
+	
+	\chapter{External Direct Products}
+	\input{chapters/chapter8}
+	
+	\chapter{Normal Subgroups and Factor Groups}
+	\input{chapters/chapter9}
+	
+	\chapter{Group Homomorphisms}
+	\input{chapters/chapter10}
+	
+	\chapter{Fundamental Theorem of Finite Abelian Groups}
+	\input{chapters/chapter11}
+
+
+\part{Rings}
+	\chapter{Introduction to Rings}
+	\input{chapters/chapter12}
+	
+	\chapter{Integral Domains}
+	\input{chapters/chapter13}
+	
+	\chapter{Ideals and Factor Rings}
+	\input{chapters/chapter14}
+	
+	\chapter{Ring Homomorphisms}
+	\input{chapters/chapter15}
+	
+	\chapter{Polynomial Rings}
+	\input{chapters/chapter16}
+	
+	\chapter{Factorization of Polynomials}
+	\input{chapters/chapter17}
+	
+	\chapter{Divisibility in Integral Domains}
+	\input{chapters/chapter18}
+	
+\part{Fields}
+	\chapter{Vector Spaces}
+	\input{chapters/chapter19}
+	
+	\chapter{Extension Fields}
+	\input{chapters/chapter20}
+	
+	\chapter{Algebraic Extensions}
+	\input{chapters/chapter21}
+	
+	\chapter{Finite Fields}
+	\input{chapters/chapter22}
+	
+\part{Special Topics}
+	\chapter{Sylow Theorems}
+	\input{chapters/chapter23}
+	
+	\chapter{Finite Simple Groups}
+	\input{chapters/chapter24}
+	
+	\chapter{Generators and Relations}
+	\input{chapters/chapter25}
+	
+	\chapter{Introduction to Algebraic Coding Theory}
+	\input{chapters/chapter26}
+	
+	\chapter{Introduction to Galois Theory}
+	\input{chapters/chapter27}
+	
+\end{document}

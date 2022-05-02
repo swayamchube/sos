@@ -1,0 +1,74 @@
+\begin{definition}[Zero-Divisor]
+	A \textit{zero-divisor} is a non-zero element $a$ of a commutative ring $R$ such that there is a non-zero element $b\in R$ with $ab=0$( which obviously implies $ba=0$).
+\end{definition}
+
+\begin{definition}[Integral Domain]
+	An \textit{integral domain} is a commutative ring with unity and no zero-divisors.
+\end{definition}
+
+Some examples of integral domains are
+\begin{itemize}
+	\item The ring of integers $\Z$ under ordinary addition and multiplication.
+	\item The ring of Gaussian Integers $\Z[i] = \{a+bi\mid a,b\in\Z\}$ under ordinary addition and multiplication.
+	\item The ring $\Z[x]$ of integral polynomials.
+\end{itemize}
+
+\begin{proposition}[Cancellation]
+	Let $a,b,c\in R$ which is an integral domain. If $a\ne0$ and $ab=ac$, then $b=c$.
+\end{proposition}
+\begin{proof}
+	Using distributivity of multiplication, we can write $a(b-c) = 0$. But, since $R$ is an integral domain, $a$ cannot be a zero-divisor and hence $b-c=0$, or equivalently $b=c$.
+\end{proof}
+
+\begin{definition}
+	A \textit{field} is a commutative ring with unity in which every non-zero element is a unit.
+\end{definition}
+
+\begin{proposition}
+	A finite integral domain is a field.
+\end{proposition}
+\begin{proof}
+	Let $F$ be a finite integral domain and $a\in F$ be a non-zero element. Consider the set 
+	$$
+	S = \{a,a^2,\cdots,a^{|F|+1}\}
+	$$
+	Since $F$ is closed under multiplication, there must exist indices $i$ and $j$ with $i>j$ such that $a^i = a^j$, or $a^{i-j}=1$, due to the cancellation property. This immediately implies that $a$ is a unit and hence $F$ is a field.
+\end{proof}
+
+\begin{corollary}
+	For every prime $p$, $\Z_{p}$ is a field.
+\end{corollary}
+
+For the simplicity of notation, for any positive integer $n$, we denote 
+$$
+n\cdot x\stackrel{\text{def}}{:=} \underbrace{x+x+\cdots+x}_{n\text{ times}}
+$$
+
+\begin{definition}[Characteristic of a Ring]
+	The \textit{characteristic} of a ring $R$ is the least positive integer $n$ such that $n\cdot x=0$ for all $x\in R$. If no such integer exists, we say that $R$ has characteristic $0$. The characteristic of $R$ is denoted by $\chr R$.
+\end{definition}
+
+\begin{proposition}
+	Let $R$ be a ring with unity $1$. If $1$ has infinite order under addition, then $\chr R=0$. If $1$ has order $n$ under addition, then the characteristic of $R$ is $n$.
+\end{proposition}
+\begin{proof}
+	The contrapositive of the first statement is obviously true, and hence the statement must be true as well. As for the second statement, note that for all $a\in R$,
+	\begin{align*}
+	n\cdot a &= \underbrace{a+a+\cdots+a}_{n \text{ times}}\\
+	&= \underbrace{1\cdot a+1\cdot a+\cdots+1\cdot a}_{n\text{ times}}\\
+	&= (\underbrace{1+1+\cdots+1}_{n\text{ times}})a\\
+	&= (n\cdot1)a = 0a = 0
+	\end{align*}
+	Thus, $\chr R\le n$. But since the order of $1$ is exactly $n$, $\chr R=n$.
+\end{proof}
+
+\begin{proposition}
+	The characteristic of an integral domain is either $0$ or a prime.
+\end{proposition}
+\begin{proof}
+	Using the previous result, we need only study the order of $1$. Assume the order of $1$ is given by $st$, where $s,t\in\N$. Then
+	$$
+	0=(st)\cdot 1 = s\cdot(t\cdot 1) = (s\cdot 1)(t\cdot 1)
+	$$
+	But since we are working in an integral domain, we can conclude that either $s\cdot 1$ or $t\cdot 1$ must be $0$. Now, if both of $s,t>1$, then we have a contradiction to the minimality of the order $st$. Thus, either $s$ or $t$ must be $1$ and $st$ must be prime.
+\end{proof}

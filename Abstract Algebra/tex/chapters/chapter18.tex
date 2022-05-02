@@ -1,0 +1,95 @@
+\begin{definition}
+	Let $D$ be an integral domain. Elements $a,b\in D$ are said to be \textit{associates} if $a=ub$, where $u$ is a unit of $D$. A non-zero element $a$ of an integral domain $D$ is called an \textit{irreducible} if $a$ is not a unit and, wheneer $b,c\in D$, with $a=bc$, then $b$ or $c$ is a unit. A non-zero element $a$ of an integral domain $D$ is called a \textit{prime} if $a$ is not a unit and $a\mid bc$ implies $a\mid b$ or $a\mid c$.
+\end{definition}
+
+\begin{proposition}
+	In an integral domain, every prime is an irreducible.
+\end{proposition}
+\begin{proof}
+	Let $D$ be an integral domain and $a\in D$ be a prime. Let $b,c\in D$ such that $a=bc$. We know that $a\mid b$ or $a\mid c$. Suppose $b=at$. Then, 
+	\begin{equation*}
+		b = at = (bc)t = b(ct)
+	\end{equation*}
+	that is, $ct = 1$. Thus, $c$ is a unit.
+\end{proof}
+
+\begin{proposition}
+	In a principal ideal domain, an element is an irreducible if and only if it is a prime.
+\end{proposition}
+\begin{proof}
+	We know from the previous proposition that all primes are irreducible. We only need to show that all irreducible elements are primes.\\
+	Let $a$ be an irreducible element of a principal ideal $D$. Suppose now that $a\mid bc$. We shall show that $a\mid b$ or $a\mid c$. Consider the ideal $I=\{ax+by\mid x,y\in D\}$ and let $\langle d\rangle = I$, we know $d$ exists since $D$ is a principle ideal domain. Since $a\in I$, we can write $a=dr$ and because $a$ is irreducible, $d$ is a unit or $r$ is a unit. If $d$ is a unit, then $I=D$ and we may write $1=ax+by$. Then, $c = acx+bcy = acx+ay$ and since $a$ divides both the terms on the right, it must divide $c$. On the other hand, if $r$ is a unit, then $\langle a\rangle = \langle d\rangle= I$, and, because $b\in I$, there is an element $t$ in $D$ such that $at=b$. Thus, $a\mid b$.
+\end{proof}
+
+\begin{definition}[Unique Factorization Domain]
+	An integral domain $D$ is a \textit{unique factorization domain} if 
+	\begin{enumerate}
+		\item every non-zero element of $D$ that is not a unit can be written as a product of irreducibles of $D$
+		\item the factorization into irreducibles is unique up to associates and the order in which the factors appear.
+	\end{enumerate}
+\end{definition}'
+
+\begin{lemma}
+	In a principal ideal domain $D$, any strictly increasing chain of ideals $I_1\subset I_2\subset\cdots$ must be finite in length.
+\end{lemma}
+\begin{proof}
+	Let $I_1\subset I_2\subset\cdots$ be a chain of strictly increasing ideals in an integral domain $D$, and let $I$ be the union of all the ideals in this chain. For any $x\in I$, there must exist an index $j$ such that $x\in I_j$ and hence for all $d\in D$, $xd,dx\in I_j\subseteq I$ and thus $I$ is an ideal of $D$.\\
+	But since $D$ is a principal ideal domain, there is an element $a$ in $D$ such that $I=\langle a\rangle$. Because $a\in I$, and $I=\bigcup I_i$, $a\in I_j$ for some index $j$. Then, we have $I_i\subseteq I=\langle a\rangle\subseteq I_j$, so that $I_j$ must be the last member of the chain. This completes the proof.
+\end{proof}
+
+\begin{proposition}[PID$\Longrightarrow$UFD]
+	Every principal ideal domain is a unique factorization domain.
+\end{proposition}
+\begin{proof}
+	Let $D$ be a principal ideal domain and let $a_0$ be any non-zero non-unit in $D$. If $a_0$ is irreducible, we are done. We may assume that $a_0=b_1a_1$ where neither $b_1$ nor $a_1$ is a unit and $a_1$ is non-zero. If $a_1$ is not irreducible then we can write $a_1=b_2a_2$ and so on. Continuing in this fashion, we shall obtain a sequence $b_1,b_2,\cdots$ of elements that are not units in $D$ and a sequence $a_0,a_1,a_2,\cdots$ of non-zero elements of $D$ with $a_n=b_{n+1}a_{n+1}$ for each $n$. Hence, $\langle a_0\rangle\subset\langle a_1\rangle\subset\cdots$ but due to the previous lemma, it must be finite, implying that $a_r$ must be irreducible. Thus, every $a\in D$ has atleast one irreducible factor.\\
+	Now write $a_0=p_1c_1$, where $p_1$ is irreducible and $c_1$ is not a unit. If $c_1$ is not irreducible, then we can write $c_1=p_2c_2$ and so on. Then, we obtain a strictly increasing sequence $\langle a_0\rangle\subset\langle c_1\rangle\subset\langle c_2\rangle\subset\cdots$. Due to the previous lemma, this must terminate at some $c_s$ where $c_s$ is irreducible. Thus, we have been able to successfully factor $a_0$ as a product of irreducibles. \textbf{Thus every element of a principal ideal domain is a product of irreducibles.}\\
+	Suppose now that some element $a\in D$ can be written as
+	$$
+	a = p_1p_2\cdots p_r = q_1q_2\cdots q_s
+	$$
+	where the $p$'s and the $q$'s are irreducible and repetition is permitted. We shall induct on $r$. If $r=1$, then $a$ is irreducible and $s=1$ and $p_1=q_1$. Assume now the hypothesis is true for all $k<r$. We shall prove the same for $r$. Due to \textbf{Proposition 18.136} every $p_i$ must be a prime. Then $p_1$ must divide some $q_j$, without loss of generality, let $p_1\mid q_1$. Then, we can write $q_1=up_1$ for some unit $u$ (since $q_1$ is irreducible too). We now have that 
+	$$
+	p_2\cdot p_r = (uq_2)\cdots q_s
+	$$
+	but due to induction, we know that these factorizations are ideantical up to associates and the order in which the factors appear. Thus, the same is true about the two factorizations of $a$.
+\end{proof}
+
+There is an alternate way to finish the proof, (assume $r\le s$) note that every prime $p_i$ divides $q_j$ for some $j$ and no two primes can divide the same $q_j$. So without loss of generality, we can let $p_i\mid q_i$ for each $i\le r$. And, then we would have a product of units and some $q_i$'s (assuming $r\ne s$) which is equal to unity, this is absurd since the primes are not unit. Thus $r=s$ and we are done.\\
+
+\begin{corollary}
+	Let $F$ be a field. Then $F[x]$ is a unique factorization domain.
+\end{corollary}
+\begin{proof}
+	Due to \textbf{Proposition 16.122} we have that $F[x]$ is a Principal Ideal Domain. This completes the proof :).
+\end{proof}
+
+\begin{definition}[Euclidean Domain]
+	An integral domain $D$ is called a \textit{Euclidean Domain} if there is a functoin $d$ called the \textit{measure} from the nonzero elements of $D$ to the nonnegative integers such that 
+	\begin{itemize}
+		\item $d(a)\le d(ab)$ for all non-zero $a,b\in D$
+		\item if $a,b\in D$, $b\ne0$, then there exist elements $q,r\in D$ such that $a=bq+r$, where $r=0$ or $d(r)<d(b)$.
+	\end{itemize}
+\end{definition}
+A few examples of Euclidean Domains are
+\begin{itemize}
+	\item The ring $\Z$ equipped with the measure $d(a)=|a|$, which is the absolute value function is a Euclidean Domain.
+	\item Let $F$ be a field. Then $F[x]$ equipped with the measure function $d(f(x)) = \deg f(x)$ is a Euclidean Domain.
+	\item The ring of Gaussian Integers equipped with the measure function $d(a+bi) = a^2+b^2$ is a Euclidean Domain.
+\end{itemize}
+
+\begin{proposition}[ED$\Longrightarrow$PID]
+	Every Euclidean Domain is a Primcipal Ideal Domain
+\end{proposition}
+\begin{proof}
+	Let $D$ be a Euclidean Domain and $I$ a non-zero ideal of $D$. Among all the non-zero elements of $I$, let $a$ be such that $d(a)$ is a minimum. Then $I=\langle a\rangle$. For, if $b\in I$, there are elements $q$ and $r$ such that $b=aq+r$, where $r=0$ or $d(r)<d(a)$, which contradicts the minimality of $d(a)$. Finally, the zero ideal is $\langle 0\rangle$.
+\end{proof}
+\begin{corollary}
+	Every Euclidean Domain is a Uniqe Factorization Domain.
+\end{corollary}
+
+\begin{proposition}
+	If $D$ is a unique factorization domain, then $D[x]$ is a unique factorization domain.
+\end{proposition}
+\begin{proof}
+	% Add proof later
+\end{proof}

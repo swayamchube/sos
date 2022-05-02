@@ -1,0 +1,78 @@
+We begin first by defining a cyclic group
+\begin{definition}[Cyclic Groups]
+	A group $G$ is called cyclic, if there is an element $a\in G$ such that $G=C(a)$
+\end{definition}
+At this point, it may be tempting to conclude that a cyclic group is always finite. But, this is not the case, the simplest counterexample to this is $(\Z,+)=\langle1\rangle$.
+\begin{proposition}
+	Let $G$ be a group and $a\in G$. If $a$ has infinite order then $a^i=a^j$ if and only if $i=j$. If $a$ has finite order, say $n$, then $\langle a\rangle = \{e,a,a^2,\ldots,a^{n-1}\}$ and $a^i=a^j$ if and only if $n\mid i-j$. 
+\end{proposition}
+\begin{proof}
+	Assume FTSOC, $a$ has infinite order and there exist indices $i$ and $j$ such that $a^i=a^j$. But that implies $a^{i-j}=e$, contradicting the assumption that $a$ has infinite order.\\
+	Now, assume that $|a|=n$. Let $a^i=a^j$ for some $i$ and $j$. Then $a^{i-j}=e$. Let now $i-j=qn+r$. Note that the choice of $q$ and $r$ is guaranteed due to the division algorithm. This then implies that $(a^{n})^{q}a^r=e$ or, equivalently, $a^r=e$. Since $r<n$, the only admissible value of $r$ is zero, else it would contradict the fact that the order of $a$ is $n$. And thus $n\mid i-j$.
+\end{proof}
+\begin{corollary}
+	Let $G$ be a group and $a\in G$. Then $|a|=|\langle a\rangle|$.
+\end{corollary}
+\begin{corollary}
+	Let $G$ be a group and let $a$ be an element of order $n$ in $G$. If $a^k=e$, then $n$ divides $k$.
+\end{corollary}
+\begin{corollary}
+	Let $G$ be a finite group and $a,b\in G$, then $|ab|$ divides $|a||b|$.
+\end{corollary}
+
+\begin{proposition}
+	Let $G$ be a group and $a\in G$ be an element of order $n$ and let $k$ be a positive integer. Then $\langle a^k\rangle = \langle a^{\gcd(n,k)}\rangle$ and $|a^k|=n/\gcd(n,k)$.
+\end{proposition}
+\begin{proof}
+	For simplicity, let $d=\gcd(n,k)$. We need to show that $\langle a^k\rangle=\langle a^d\rangle$. One easily notes that $\langle a^d\rangle\subseteq\langle a^k\rangle$. But now, by Bezout's Lemma, there exist integers $x$ and $y$ such that $d=nx+ky$. Then $a^d=(a^k)y$, or equivalently, $\langle a^k\rangle\subseteq\langle a^d\rangle$. And thus, $\langle a^k\rangle = \langle a^{\gcd(n,k)}\rangle$.\\
+	Let $|a^k|=x$. Then by definition, $a^{kx}=e$. Using \textbf{Corollary 4.2}, we must have $n\mid kx$ or $n\mid dmx$. Since $\gcd(n,m)=1$, $n\mid dx$ and it is now obvious that the smallest positive integer $x$ satisfying the reduced equation is $n/d$ and we have the desired conclusion.
+\end{proof}
+
+\begin{corollary}
+	In a finite cyclic group, the order of an element divides the order of the group.
+\end{corollary}
+\begin{proof}
+	Since the group is given to be cyclic, there must exist an element $a$ such that every element $x$ can be written as $a^k$ for some $k$. Then, using \textbf{Proposition 4.22}, $|x|=|a^k|=\gcd(n,k)$, where $n$ is the order of $a$ and hence that of the group. Hence, we have the desired conclusion.
+\end{proof}
+
+\begin{corollary}
+	Let $G$ be a group and $a\in G$ such that $|a|=n$. Then $\langle a^i\rangle=\langle a^j\rangle$ if and only if $\gcd(n,i)=\gcd(n,j)$, and $|a^i|=|a^j|$ if and only if $\gcd(n,i)=\gcd(n,j)$. 
+\end{corollary}
+A better way to represent the above is 
+\begin{quote}
+	$\langle a^i\rangle=\langle a^j\rangle$ $\Longleftrightarrow$ $\gcd(n,i)=\gcd(n,j)$ $\Longleftrightarrow$ $|a^i|=|a^j|$
+\end{quote}
+
+\begin{corollary}
+	Let $G$ be a group and $a\in G$ with $|a|=n$. Then $\langle a\rangle= \langle a^j\rangle$ if and only if $\gcd(n,j)=1$ and $|a|=|\langle a^j\rangle|$ if and only if $\gcd(n,j)=1$.
+\end{corollary}
+
+\begin{theorem}[Fundamental Theorem of Cyclic Groups]
+	Every subgroup of a cyclic group is cyclic. Moreover if $|\langle a\rangle|=n$, then the order of any subgroup of $\langle a\rangle$ is a divisor of $n$; and, for each positive divisor $k$ of $n$, the group $\langle a\rangle$ has exactly one subgroup of order $k$, namely $\langle a^{(n/k)}\rangle$. 
+\end{theorem}
+\begin{proof} % Get the proof verified by Shourya %
+	Let $G$ be a cyclic group such that $G=\langle a\rangle$ for some $a\in G$ and let the order of $a$ be $n$. Let $H$ be a subgroup of $G$. We would like to show that $H$ is cyclic. Since $H$ is finite and we can write every element in $H$ as $a^j$ for some $j\in\N$, we can find an element in $H$ such that $j$ is minimized for that element. Call this element $x$. We claim that $H=\langle x\rangle$. Assume for the sake of contradiction that there exists $b=a^k\in H$ such that $b\notin\langle x\rangle$, then, according to the division algorithm, there must exist non-negative integers $q$ and $r$ such that $k=qj+r$, where $r>0$. And in that case, $a^r=b(x^{-1})^{q}\in H$, but this contradicts the minimality of $j$. Thus, $H=\langle x\rangle$ is a cyclic group.\\
+	Since we showed previously that any subgroup of a cyclic group $G$ has a generator(is cyclic). If that generator is given by $a^j$, where $a$ is the generator for $G$, then according to \textbf{Proposition 4.22}, the order of the subgroup must be $n/\gcd(n,j)$ which is obviously a divisor of $n$.\\
+	Let $H_1$ and $H_2$ be two subgroups of $G$ of order $k$. Then, they each have a generator, say $a^i$ and $a^j$ respectively. Then, using \textbf{Corollary 4.5}, we can conclude that $\langle a^i\rangle=\langle a^j\rangle$ or equivalently $H_1=H_2$ which proves the uniqueness of the subgroup of order $n$. Since we proved in the previous result that all the subgroups of $G$ must have order dividing $n$, the only permissible values of $k$ are those that divide $n$. It is now easy to check that $\langle a^{n/k}\rangle$ is a subgroup of $G$ and due to uniqueness, it is the only subgroup of $G$ with order $k$. 
+\end{proof}
+
+\begin{proposition}
+	If $d$ is a positive divisor of $n$, then the number of elements of order $d$ in a cyclic group $G$ of order $n$ are $\vphi(d)$. Where $\vphi$ is the Euler Totient Function.
+\end{proposition}
+\begin{proof}
+	Let $a$ be the generator of $G$, then from \textbf{Proposition 4.22}, we know that all the elements of order $d$ will be of the form $a^k$ where $n/\gcd(n,k)=d$. Or, $n/d = \gcd(n,k)$, implying that $\gcd(d,k/(\frac{n}{d}))=1$. Thus, $k$ takes the form $q\frac{n}{d}$ where $\gcd(q,d)=1$. Thus, we have exactly $\vphi(d)$ elements in $G$, having order $d$.
+\end{proof}
+
+\begin{exercise}
+	Use the above result to show that 
+	$$
+	\sum_{d\mid n}\vphi(d) = n
+	$$
+\end{exercise}
+
+\begin{proposition}
+	Let $G$ be a finite group. Then the number of elements in $G$ having order $d$ is a multiple of $\vphi(d)$.
+\end{proposition}
+\begin{proof}
+	Let $a\in G$ have order $d$. Then, there are exactly $\vphi(d)$ elements in $\langle a\rangle$ which have order $d$. Let $b\in G$ be another element of order $d$ but $b\notin\langle a\rangle$. We shall show that $\{x\mid x\in\langle a\rangle, |x|=d\}\cap\{x\mid x\in\langle b\rangle, |x|=d\}=\emptyset$. Suppose not, then there exists $c\in\{x\mid x\in\langle a\rangle, |x|=d\}\cap\{x\mid x\in\langle b\rangle, |x|=d\}$. But according to \textbf{Proposition 4.22}, $\langle c\rangle=\langle a\rangle$ and $\langle c\rangle = \langle b\rangle$ which contradicts the fact that $b\notin\langle a\rangle$. Thus $\{x\mid x\in\langle a\rangle, |x|=d\}\cap\{x\mid x\in\langle b\rangle, |x|=d\}=\emptyset$. Thus, the total number of elements with order $d$ are now $2\vphi(d)$. Proceeding inductively, one can see that the number of elements with order $d$ must be a multiple of $\vphi(d)$.
+\end{proof}

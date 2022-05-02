@@ -1,0 +1,102 @@
+\begin{definition}
+	Let $D$ be an integral domain. A polynomial $f(x)$ from $D[x]$ that is neither the zero polynomial nor a unit in $D[x]$ is said to be \textit{irreducible} over $D$ if, whenever $f(x)$ is expressed as a product $f(x)=g(x)h(x)$, with $g(x)$ and $h(x)$ in $D[x]$, then either $g(x)$ or $h(x)$ is a unit in $D[x]$. A non-zero, non-unit element of $D[x]$ that is not irreducible over $D$ is called \textit{reducible} over $D$.
+\end{definition}
+
+\begin{proposition}
+	Let $F$ be a field. If $f(x)\in F[x]$ and $\deg f(x)$ is either 2 or 3, then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero in $F$.
+\end{proposition}
+\begin{proof}
+	Assume now that $f(x)=g(x)h(x)$ where neither $g$ nor $h$ are the unity in $D$. Then, it is trivial that either $\deg g$ or $\deg h$ is $1$ and we have a root of the polynoimal in $F$.\\
+	Conversly, suppose that $f(a)=0$, where $a\in F$. Then by the Factor Theorem, we know that $x-a$ is a factor of $f(x)$, therefore, $f(x)$ is reducible over $F$.
+\end{proof}
+
+\begin{definition}
+	The content of a non-zero polynomial $a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0$ where the $a_i$'s are integers, is the greatest common divisor of the integers $a_n,a_{n-1},\cdots,a_0$. A  \textit{primitive polynomial} is an element of $\Z[x]$ with content $1$.
+\end{definition}
+
+\begin{lemma}
+	Let $p$ be a prime and $f(x),g(x)\in\Z_p[x]$ such that $f(x)g(x)=0$. Then either $f(x)=0$ or $g(x)=0$.
+\end{lemma}
+\begin{proof}
+	Proof is rather easy, start with the leading coefficients of both $f$ and $g$ and work your way down.
+\end{proof}
+
+\begin{theorem}[Gauß]
+	The product of two primitive polynomials is primitive.
+\end{theorem}
+\begin{proof}
+	Let $f(x)$ and $g(x)$ be primitive polynomials. Suppose $f(x)g(x)$ is not primitive and let $p$ be a prime divisor of the content of $f(x)g(x)$. Then, working in $\Z_p[x]$, we have that $\overline{f}\overline{g}=0$ where $\overline{f}$ and $\overline{g}$ are the residues of $f$ and $g$ in $\Z_p[x]$. But due to the previous lemma, we know that either $f$ or $g$ must be $0$ and hence, either $f$ or $g$ must be non-primitive. This is a contradiction!
+\end{proof}
+
+\begin{theorem}[Gauß\footnote{Gallian doesn't attribute this theorem to Gauß but I'm pretty sure it's colloquially known as Gauß's Lemma.}]
+	Let $f(x)\in\Z[x]$. If $f(x)$ is reducible over $\Q$, then it is reducible over $\Z$.
+\end{theorem}
+\begin{proof}
+	Suppose that $f(x)=g(x)h(x)$, where $g(x)$ and $h(x)$ are in $\Q[x]$. We my assume that $f(x)$ is primitive. LEt $a$ be the least common multiple of the denominators of the coefficients of $g(x)$ and $b$ be the least common multiple of the denominators of the coeffieicnts $h(x)$. Then $abf(x)=ag(x)\cdot bh(x)$ where $ag(x)$ and $bh(x)$ in $\Z[x]$. Let $c_1$ be the content of $ag(x)$ and $c_2$ be the content of $bh(x)$. Then we can write $ag(x)=c_1g_1(x)$ and $bh(x)=c_2h_1(x)$. Then $abf(x)=c_1c_2g_1(x)h_2(x)$. Since $f(x)$ is primitive, the content of $abf(x)$ is $ab$ also since the product of two primitive polynomials is primitive, it follows that the content of $c_1c_2g_1(x)h_1(x)$ is $ab$. Thus $ab=c_1c_2$ and we have the desired conclusion.
+\end{proof}
+
+\begin{proposition}[Mod $p$ Irreducibility Test]
+	Let $p$ be a prime and suppose that $f(x)\in\Z[x]$ with $\deg f(x)\ge1$. Let $\overline{f}(x)$ be the polynomial in $\Z_p[x]$ obtained from $f(x)$ by reducing all the coefficients of $f(x)$ modulo $p$. If $\overline{f}(x)$ is irreducible over $\Z_p$ and $\deg\overline{f}(x)=\deg f(x)$, then $f(x)$ is irreducible over $\Q$.
+\end{proposition}
+\begin{proof}
+	From the previous theorem, we konw that if $f(x)$ is reducible over $\Q$, then it is reducible over $\Z$. Then, reducing modulo $p$, $\deg f(x) = \deg \overline{f}(x)$, we have $\deg\overline{g}(x)\le\deg g(x) < \overline{f}(x)$ and $\deg\overline{h}(x)\le\deg h(x)<\deg\overline{f}(x)$. But, $\overline{f}(x)=\overline{g}(x)\overline{h}(x)$, and this contradicts our assumption that $\overline{f}(x)$ is irreducible over $\Z_p$.
+\end{proof}
+
+\begin{theorem}[Eisentein's Criterion, 1850]
+	Let 
+	$$
+	a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 \in \Z[x]
+	$$
+	IF there is a prime $p$ such that $p\nmid a_n$, $p\mid a_{n-1},\cdots,a_0$ and $p^2\nmid a_0$, then $f(x)$ is irreducible over $\Q$.
+\end{theorem}
+\begin{proof}
+	If $f(x)$ is reducible over $\Q$, we know by Gauß's Theorem that there exist integer polynomials $g(x)$ and $h(x)$ such that $f(x) = g(x)h(x)$ and $\deg g,\deg h\ge 1$. Say $g(x) = g_rx^r+\cdots+g_0$ and $h(x)=h_sx^s+\cdots+h_0$. Since $p\mid a_0$, $p$ must divide either $g_0$ or $h_0$. Say without loss of generality, $p\mid g_0$ and $p\nmid h_0$. Since $p\nmid g_i$ for all $i$, since $p\nmid a_n$, we can say that there exists an index $t$ such that $p\nmid g_t$ but $p\mid g_i$ for all $i<t$. Using this, we compute the coefficient $a_t=g_th_0+\cdots+g_0h_t$. But since $t\le\deg g<n$, we know that $p\mid a_t$ which forces $p\mid g_th_0$ a contradiction to $p^2\nmid a_0$. This completes the proof.
+\end{proof}
+
+\begin{corollary}
+	For any prime $p$, the the $p$-th cyclotomic polynomials:
+	\begin{equation*}
+		\Phi_p(x) = \frac{x^p-1}{x-1} = x^{p-1} + x^{p-2} + \cdots + x + 1
+	\end{equation*}
+	is irreducible over $\Q$.
+\end{corollary}
+\begin{proof}
+	We have 
+	\begin{equation*}
+		f(x) = \Phi_p(x+1) = \frac{(x+1)^p-1}{(x+1)-1} = x^{p-1} + \binom{p}{1}x^{p-2} + \cdots + \binom{p}{p-1}
+	\end{equation*}
+	now it is trivial due to Eisentein's Criterion that $f(x)$ is irreducible.
+\end{proof}
+
+\begin{proposition}
+	Let $F$ be a field and let $p(x)\in F[x]$. Then $\langle p(x)\rangle$ is a maximal ideal in $F[x]$ if and only if $p(x)$ is irreducible over $F$.
+\end{proposition}
+\begin{proof}
+	Suppose that $\langle p(x)\rangle$ is a maximal ideal in $F[x]$. Clearly $p(x)$ is neither zero nor a unit in $F[x]$. Suppose now $p(x)=g(x)h(x)$. Then, $\langle p(x)\rangle\subseteq\langle g(x)\rangle\subseteq F[x]$. Thus, $\langle p(x)\rangle=\langle g(x)\rangle$ or $F[x]=\langle g(x)\rangle$. In the first case, we would have $\deg p(x)=\deg g(x)$ which would force $\deg h(x)=0$ which is absurd. In the second case, $\deg g(x)=0$ which is absurd as well. Hence, $p(x)$ must be irreducible over $F$.\\
+	Suppose now that $p(x)$ is irreducible over $F$. Let $I$ be any ideal of $F[x]$ such that $\langle p(x)\rangle\subseteq I\subseteq F[x]$. Because $F[x]$ is a Principal Ideal Domain, we know that $I=\langle g(x)\rangle$ for some $g(x)\in F[x]$. So $p(x)\in\langle g(x)\rangle$ and therefore, $p(x)=g(x)h(x)$ for some $h(x)\in F[x]$. Since $p(x)$ is irreducible over $F$, either $g(x)$ is constant or $h(x)$ is constant. In the first case, we would have $I=F[x]$ whereas in the second case, we would have $\langle p(x)\rangle =\langle g(x)\rangle$. And both cases imply that $\langle p(x)\rangle $ is maximal in $F[x]$.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field and $p(x)$ be an irreducible polynomial over $F$. Then $F[x]/\langle p(x)\rangle$ is a field.
+\end{corollary}
+\begin{proof}
+	From the above theorem, we have that $\langle p(x)\rangle$ is a maximal ideal. But then we are done due to \textbf{Proposition 14.105}.
+\end{proof}
+
+\begin{corollary}
+	Let $F$ be a field and let $p(x),a(x),b(x)\in F[x]$. If $p(x)$ is irreducible over $F$ and $p(x)\mid a(x)b(x)$, then $p(x)\mid a(x)$ or $p(x)\mid b(x)$.
+\end{corollary}
+\begin{proof}
+	Since $p(x)$ is irreducible, $F[x]/\langle p(x)\rangle$ is a field and, therefore, an integral domain and thus $\langle p(x)\rangle$ is a prime ideal due to \textbf{Proposition 14.103}. We now have that $a(x)b(x)\in\langle p(x)\rangle$. Thus, $a(x)\in\langle p(x)\rangle$ or $b(x)\in\langle p(x)\rangle$. This completes the proof.
+\end{proof}
+
+\begin{theorem}
+	Every polynomial in $\Z[x]$ that is not the zero polynomial or a unit in $\Z[x]$ can be written in the form $b_1b_2\cdots b_sp_1(x)p_2(x)\cdots p_m(x)$, where the $b_i$'s are irreducible polynomials of degree $0$ and the $p_i$' sare irreducible polynomials of positive degree. Furthermore, if 
+	\begin{equation*}
+		b_1b_2\cdots b_sp_1(x)p_2(x)\cdots p_m(x) = c_1c_2\cdots c_sq_1(x)q_2(x)\cdots q_n(x)
+	\end{equation*}
+	where the $c_i$'s and $q_i(x)$ satisfy the same hypothesis, then $s=t$, $m=n$ and the $c_i$'s and $q_i$'s are a permutation of $b_i$'s and $p_i$'s respectively.
+\end{theorem}
+\begin{proof}
+	% Add proof later
+\end{proof}
