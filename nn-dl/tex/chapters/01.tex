@@ -1,0 +1,47 @@
+\section{Universal Approximation}
+A \textit{deep network} may be represented by the following function:
+\begin{equation*}
+	f(x; w) = \sigma_L(w_L\sigma_{L-1}(\ldots\sigma_1(w_1x + b_1)\ldots))
+\end{equation*}
+where each $\sigma_i$ is a vectorized \textit{non-linear activation function}. Some examples are the Rectified Linear Unit (ReLU) activation function given by $\max\{0,x\}$ and the Sigmoid function given by $\frac{1}{1 + e^{-x}}$.
+
+We define the \textit{depth} as $L$ and the \textit{width} as $\max_{i}d_i$.
+
+We shall show in this section that \textit{all continuous functions} can be expressed with deep networks to sufficient accuracy.
+
+\begin{definition}[Universal Approximator]
+	A class of functions $\mathcal{H}$ is a \textit{universal approximator} if for any continuous function $g$ and compact domain $D$ and any $\varepsilon > 0$, there is $f\in\mathcal{H}$ such that 
+	\begin{equation*}
+		|f(x) - g(x)|\le\varepsilon \qquad \forall x\in D
+	\end{equation*}
+\end{definition}
+
+The following theorem helps characterize universal approximators:
+\begin{theorem}
+	Suppose $\mathcal{H}$ satisfies the following propositions:
+	\begin{enumerate}
+		\item each $f\in H$ is continuous over $D$ 
+		\item for all $x\in D$, there is $f\in\mathcal{H}$ with $f(x)\ne0$
+		\item for all $x\ne x'\in D$, there is $f\in\mathcal{H}$ with $f(x)\ne f(x')$
+		\item $H$ is closed under $\times$ and vector space operations
+	\end{enumerate}
+	then $\mathcal{H}$ is a universal approximator.
+\end{theorem}
+
+A major theorem related to this is due to \href{https://www.cs.cmu.edu/~epxing/Class/10715/reading/Kornick_et_al.pdf}{Hornik et al}.
+\begin{theorem}[Hornik et al. 1989]
+	For any continuous activation function $\sigma\colon\R\to\R$ with 
+	\begin{equation*}
+		\lim_{z\to-\infty}\sigma(z) = 0 \qquad \lim_{z\to\infty}\sigma(z) = 1
+	\end{equation*}
+	the depth two feedforward netwroks of unbounded width are universal approximators.
+\end{theorem}
+
+\begin{theorem}[Park et al.]
+	For any square integrable function $f:\R^d\to\R$ and any $\varepsilon > 0$, there is a width $d + 1$ network with ReLU activations such that 
+	\begin{equation*}
+		\int|f(x) - \hat{f}(x)|^2~dx\le\varepsilon
+	\end{equation*}
+\end{theorem}
+
+\section{Barron's Theorem}

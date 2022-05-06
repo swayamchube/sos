@@ -1,0 +1,121 @@
+\documentclass[a4paper, 12pt]{report}
+
+\usepackage{
+	amsmath,
+	amsthm,
+	amssymb,
+	xcolor,
+	soul, 
+	cancel, 
+	fancyhdr,
+	graphicx,
+}
+\pagestyle{fancy}
+\fancyhead[L]{Abstract Algebra}
+\fancyhead[R]{\nouppercase{\leftmark}}
+\fancyfoot[C]{\thepage}
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+}
+\usepackage{geometry}
+\geometry{
+	left = 1in,
+	right = 1in,
+	top = 1in,
+	bottom = 1in,
+}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+
+\newcounter{theorem}
+\newenvironment{theorem}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt,linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Theorem~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt,linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Theorem~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+\newenvironment{definition}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=gray!15, backgroundcolor=gray!15,]
+		\bfseries Definition~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=gray!15, backgroundcolor=gray!15,]
+		\bfseries Definition~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{proposition}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Proposition~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=blue!10, backgroundcolor=blue!10,]
+		\bfseries Proposition~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newcounter{corollary}
+\newenvironment{corollary}{
+	\stepcounter{corollary}
+	\begin{mdframed}[linecolor=blue!10, backgroundcolor=blue!10, linewidth=1pt,]
+	\bfseries Corollary~\thechapter.\thecorollary.\normalfont
+}{\end{mdframed}}
+
+\newenvironment{lemma}[1][]{
+	\stepcounter{theorem}
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=yellow!30, backgroundcolor=yellow!30,]
+		\bfseries Lemma~\thechapter.\thetheorem.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=yellow!30, backgroundcolor=yellow!30,]
+		\bfseries Lemma~\thechapter.\thetheorem~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{example}[1][]{
+	\ifstrempty{#1}{
+		\begin{mdframed}[linewidth=1pt, linecolor=red!10, backgroundcolor=red!20,]
+		\bfseries Example.\normalfont
+	}{
+		\begin{mdframed}[linewidth=1pt, linecolor=red!10, backgroundcolor=red!20,]
+		\bfseries Example~(#1).\normalfont
+	}
+}{\end{mdframed}}
+
+\newenvironment{exercise}{
+	\begin{mdframed}[linewidth=1pt, linecolor=green!10, backgroundcolor=green!10,]
+	\bfseries Exercise.\normalfont
+}{\end{mdframed}}
+
+\title{
+	{Abstract Algebra}\\
+	\small Reading Project: Summer of Science\\
+	Indian Institute of Technology Bombay\\
+}
+\author{Swayam Chube\\\textbf{Mentor:} Eeshan Jain}
+\date{Last Compiled: \today}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Pb}{\mathbb{P}}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\chapter{Universal Approximation and Barron's Theorem}
+	\input{chapters/01.tex}
+\end{document}
